@@ -13,6 +13,10 @@ var lastName;
 // this is called when an error happens in a transaction
 function errorHandler(transaction, error) {
     console.log('Error: code: ' + error.code);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
 }
 
 // this is called when a successful transaction happens
@@ -83,6 +87,10 @@ function onDeviceReady() {
         //window.requestFileSystem(window.PERSISTENT, 1024*1024, onFSWin, onFSFail);
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSWin, onFSFail); 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
 }
 
 function onFSWin (fileSystem) {
