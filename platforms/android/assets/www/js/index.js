@@ -41,11 +41,7 @@ function createEvents(){
 
     var now = new Date();
     var startDate = now; // beware: month 0 = january, 11 = december
-<<<<<<< HEAD
     var endDate = new Date(2015,05,10,0,0,0,0,0);
-=======
-    var endDate = new Date(2014,10,15,19,30,0,0,0);
->>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
     var title = "My nice event";
     var location = "Home";
     var notes = "Some notes about this event.";

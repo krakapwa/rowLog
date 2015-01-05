@@ -26,11 +26,8 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/_where-is-www.txt \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/index.html \
-<<<<<<< HEAD
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/addEvents.html \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/warningEvents.html \
-=======
->>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/newEntrySurvey.html \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/newEntry.html \
@@ -152,10 +149,7 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/newEntry.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/index.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/jsonStringify.js \
-<<<<<<< HEAD
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/addEvents.js \
-=======
->>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/newEntrySurvey.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/JSON.prune-master/JSON.prune.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/css/index.css \
