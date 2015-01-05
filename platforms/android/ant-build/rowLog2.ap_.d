@@ -36,7 +36,6 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/newEntryWUP.html \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/res \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/upload.php \
-/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/config.xml \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/cordova.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/css \
