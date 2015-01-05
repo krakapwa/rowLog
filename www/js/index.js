@@ -123,14 +123,11 @@ function confirmUser(){
     lastName = $('#txLastName').val();
     uploadCsvUser();
     createEvents();
-<<<<<<< HEAD
     //alert('Event added.');
     //window.location = 'newEntry.html';
     window.location = 'warningEvents.html';
-=======
     alert('Event added.');
     //window.location = 'newEntry.html';
->>>>>>> 962ecd6cdb7bca33a44c0ccb94648985bdb6593f
 }
 
 function uploadCsvUser(){
