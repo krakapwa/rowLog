@@ -20,6 +20,10 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadHR() {
+    window.location = 'newEntry.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
@@ -175,8 +179,8 @@ function confirmDaily(){
 
     if(checkDailyValues()==1){
         uploadCsvDaily();
-        alert("Data has been sent.");
-        window.location = 'newEntry.html';
+        //alert("Data has been sent.");
+        //window.location = 'newEntry.html';
     }
     if(checkDailyValues()==2){
         alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
@@ -260,7 +264,7 @@ function gotFileWriter(writer) {
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options);
 
 }
 

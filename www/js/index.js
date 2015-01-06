@@ -24,6 +24,10 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadUser() {
+    window.location = 'warningEvents.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
@@ -45,7 +49,9 @@ function createEvents(){
     var title = "My nice event";
     var location = "Home";
     var notes = "Some notes about this event.";
-    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+    var success = function(message) { 
+        //alert("Success: " + JSON.stringify(message));
+    };
     var error = function(message) { alert("Error: " + message); };
 
 
@@ -125,8 +131,8 @@ function confirmUser(){
     createEvents();
     //alert('Event added.');
     //window.location = 'newEntry.html';
-    window.location = 'warningEvents.html';
-    alert('Event added.');
+    //window.location = 'warningEvents.html';
+    //alert('Event added.');
     //window.location = 'newEntry.html';
 }
 
@@ -141,11 +147,13 @@ function uploadCsvUser(){
 }
 
 function uploadFile(userFileObject){
-
+    console.log('in uploadFile');
     db.transaction(function(transaction) {
         transaction.executeSql('SELECT * FROM User;', [],
                 function(transaction, result) {
-                    if (result != null && result.rows != null) {
+                    console.log(result);
+                    //if (result != null && result.rows != null) {
+                    if (result != null) {
                         for (var i = 0; i < result.rows.length; i++) {
                             var row = result.rows.item(i);
                         }
@@ -172,7 +180,7 @@ function uploadFile(userFileObject){
                         var ft = new FileTransfer();
                         console.log('Uploading: ' + userFileObject.toURL());
                         console.log('With newFileName: ' + options.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options);
                     }
 
                 },errorHandler);

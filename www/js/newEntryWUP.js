@@ -20,6 +20,10 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadWUP() {
+    window.location = 'newEntry.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
@@ -38,7 +42,7 @@ function onWUPLoad(){
 
         //tx.executeSql( 'DROP TABLE IF EXISTS WUP',nullHandler,nullHandler);
 
-        tx.executeSql( 'CREATE TABLE IF NOT EXISTS WUP(WUPId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, PLM TEXT NOT NULL, HRR60 TEXT NOT NULL)',[],nullHandler,errorHandler);
+        tx.executeSql( 'CREATE TABLE IF NOT EXISTS WUP(WUPId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, RPE TEXT NOT NULL, HRRWUP TEXT NOT NULL, HRR60 TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
 
@@ -52,8 +56,9 @@ function onWUPLoad(){
                             thisDate = row.inputDate;
                             if(today == thisDate){
                                 console.log("Restoring values...");
-                               document.getElementById("txPLM").value = row.PLM;
-                               document.getElementById("txHRR60").value = row.RPE;
+                               document.getElementById("txHRRWUP").value = row.HRRWUP;
+                               document.getElementById("txHRR60").value = row.HRR60;
+                               document.getElementById("txRPE").value = row.RPE;
                             }
                         }
 
@@ -107,8 +112,8 @@ function isNumber(n) {
 // list the values in the database to the screen using jquery to update the #lbWUP element
 function checkWUPValues() {
 
-    if( $('#txPLM').val().length!=0  || $('#txHRR60').val().length!=0 ){
-        if( isNumber($('#txPLM').val())  && isNumber($('#txHRR60').val()) ){
+    if( $('#txHRRWUP').val().length!=0 || $('#txHRR60').val().length!=0 || $('#txRPE').val().length!=0 ){
+        if( isNumber($('#txHRRWUP').val())  && isNumber($('#txHRR60').val()) && isNumber($('#txRPE').val())){
         return 1;
         }
         return 2;
@@ -121,10 +126,10 @@ function checkWUPValues() {
 
 // this is the function that puts values into the database using the values from the text boxes on the screen
 function addWUPToDB() {
-
+    console.log('adding WUP values to DB');
     //if(checkWUPValues()) {
         db.transaction(function(transaction) {
-            transaction.executeSql('INSERT OR REPLACE INTO WUP(WUPId, inputDate, inputTime, PLM, HRR60) VALUES ((select WUPId from WUP where inputDate = ?),?,?,?,?)', [getDateStr(), getDateStr(), getTimeStr(), $('#txPLM').val(), $('#txHRR60').val()],
+            transaction.executeSql('INSERT OR REPLACE INTO WUP(WUPId, inputDate, inputTime, RPE, HRRWUP, HRR60) VALUES ((select WUPId from WUP where inputDate = ?),?,?,?,?,?)', [getDateStr(), getDateStr(), getTimeStr(), $('#txRPE').val(), $('#txHRRWUP').val(), $('#txHRR60').val()],
 
                     nullHandler,errorHandler);
         });
@@ -171,11 +176,11 @@ function confirmWUP(){
 
     if(checkWUPValues()==1){
         uploadCsvWUP();
-        alert("Data has been sent.");
-        window.location = 'newEntry.html';
+        //alert("Data has been sent.");
+        //window.location = 'newEntry.html';
     }
     if(checkWUPValues()==2){
-        alert("Check your data: PLM and HRR60 must be numerical values.");
+        alert("Check your data: Heart rates and RPE must be numerical values.");
     }
     if(checkWUPValues()==0){
         alert("Your data have been saved. They will be sent when all fields are non-empty.");
@@ -187,14 +192,14 @@ function uploadCsvWUP(){
 
     console.log('makeCsvWUP');
 
-    csvData = "inputDate" + "," + "inputTime" + "," + "PLM" + "," + "HRR60" + "\n";
+    csvData = "inputDate" + "," + "inputTime" + "," + "RPE" + "," + "HRRWUP" + "," + "HRR60" + "\n";
     db.transaction(function(transaction) {
         transaction.executeSql('SELECT * FROM WUP;', [],
                 function(transaction, result) {
                     if (result != null && result.rows != null) {
                         for (var i = 0; i < result.rows.length; i++) {
                             var row = result.rows.item(i);
-                            csvData += row.inputDate + ',' + row.inputTime + ',' + row.WUP + ',' + row.HRR60 + '\n';
+                            csvData += row.inputDate + ',' + row.inputTime + ',' + row.RPE + ',' + row.HRRWUP + ',' + row.HRR60 + '\n';
                         }
 
                         fileWrite();
@@ -256,7 +261,7 @@ function gotFileWriter(writer) {
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadWUP, errorHandler, options);
 
 }
 

@@ -21,6 +21,10 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadSurvey() {
+    window.location = 'newEntry.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
@@ -146,7 +150,7 @@ function confirmSurvey(){
     //countRows('User',console.log);
 
     uploadCsvSurvey();
-    alert("Data has been sent.");
+    //alert("Data has been sent.");
     //window.location = 'newEntry.html';
 }
 
@@ -221,7 +225,7 @@ function gotFileWriter(writer) {
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadSurvey, errorHandler, options);
 
 }
 
