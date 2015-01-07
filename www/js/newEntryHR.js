@@ -31,7 +31,6 @@ function onDailyLoad(){
 
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
-    document.getElementById("confirmDailyButton").disabled = false;
     //db = openDatabase(shortName, version, displayName,maxSize);
 
     console.log('creating table Daily');

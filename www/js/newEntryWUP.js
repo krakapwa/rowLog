@@ -32,7 +32,6 @@ function onWUPLoad(){
 
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
-    document.getElementById("confirmWUPButton").disabled = false;
     //db = openDatabase(shortName, version, displayName,maxSize);
 
     console.log('creating table WUP');

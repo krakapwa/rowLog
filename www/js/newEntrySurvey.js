@@ -32,8 +32,6 @@ function onSurveyLoad(){
 
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
-    document.getElementById("confirmSurveyButton").disabled = true;
-
     console.log('creating table Survey');
 
     db = openDatabase(shortName, version, displayName,maxSize);
