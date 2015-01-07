@@ -92,8 +92,6 @@ function checkSurveyValues() {
 
         $('#lbSurvey').append('<br>' + 'Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a>');
         $('#lbUsers').append('<br>' + 'Click confirm to proceed');
-        document.getElementById("addSurveyButton").disabled = true;
-        document.getElementById("confirmSurveyButton").disabled = false;
 
         return true;
 }
@@ -145,11 +143,8 @@ function setUserName(result){
 }
 
 function confirmSurvey(){
-    //countRows('User',console.log);
-
+    addSurveyToDB(); 
     uploadCsvSurvey();
-    //alert("Data has been sent.");
-    //window.location = 'newEntry.html';
 }
 
 function uploadCsvSurvey(){
