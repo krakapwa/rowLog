@@ -33,6 +33,7 @@ function nullHandler(){};
 // called when the application loads
 function onUserInputLoad(){
 
+    $('#index').hide();
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
 }
@@ -71,10 +72,9 @@ function checkUserValues() {
 
         if(($('#txPassword').val() == "roeienopdebosbaan")){
 
-            $('#lbUsers').append('<br>' + 'Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a>');
-            $('#lbUsers').append('<br>' + 'Click confirm to proceed');
-            document.getElementById("addUserButton").disabled = true;
-            document.getElementById("confirmUserButton").disabled = false;
+            $('#lbUsers').append('Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a><br>');
+            $("#addUserButtonId").hide();
+            $("#confirmUserButtonId").show();
         }
         else{
 
@@ -87,7 +87,7 @@ function checkUserValues() {
     } else{
 
         $('#lbUsers').append('<br>' + 'Date of birth must of have 2 digits for day, 2 digits for month and 4 digits for year. First name and last name must be non-empty');
-        document.getElementById("addUserButton").disabled = false;
+            $("#addUserButtonId").show();
 
         return false;
     }
@@ -254,8 +254,7 @@ function onFSFail(error) {
 
 function onDeviceReady() {
     console.log('onDeviceReady');
-
-    document.getElementById("confirmUserButton").disabled = true;
+    $('#confirmUserButtonId').hide();
     // This alert is used to make sure the application is loaded correctly
     // you can comment this out once you have the application working
     console.log('opening database');
@@ -311,6 +310,10 @@ function onDeviceReady() {
                             console.log('user infos OK. Moving to newEntry.html');
                             window.location = 'newEntry.html';
                         }                     
+                    else{
+                        
+                        $('#index').show();
+                    }
                 },errorHandler);
     },errorHandler,nullHandler);
 }

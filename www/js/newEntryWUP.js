@@ -21,6 +21,7 @@ function successCallBack() {
 }
 
 function successUploadWUP() {
+    alert('Your data have been sent!');
     window.location = 'newEntry.html';
 }
 
@@ -134,7 +135,7 @@ function addWUPToDB() {
                     nullHandler,errorHandler);
         });
 
-        //alert("Your data has been saved.");
+        //alert("Your data has been saved, you are safe to leave the application. When all fields are completed, click 'Send Data'");
 
         //Need to get user name for csv file creation
         db.transaction(function(transaction) {
@@ -176,14 +177,12 @@ function confirmWUP(){
 
     if(checkWUPValues()==1){
         uploadCsvWUP();
-        //alert("Data has been sent.");
-        //window.location = 'newEntry.html';
     }
     if(checkWUPValues()==2){
-        alert("Check your data: Heart rates and RPE must be numerical values.");
+        alert("Your data have been saved. They will be sent when all fields are non-empty.");
     }
     if(checkWUPValues()==0){
-        alert("Your data have been saved. They will be sent when all fields are non-empty.");
+        alert("Check your data: Heart rates and RPE must be numerical values.");
     }
 }
 
