@@ -264,7 +264,7 @@ function gotFileWriter(writer) {
     options.chunkedMode = false;
 
     var params = new Object();
-    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'dailyData.csv';
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ 'dailyData.csv';
     options.params = params;
 
     console.log(options);

@@ -222,7 +222,7 @@ function gotFileWriter(writer) {
     options.chunkedMode = false;
 
     var params = new Object();
-    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'RestQ.csv';
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ 'RestQ.csv';
     options.params = params;
 
     console.log(options);
