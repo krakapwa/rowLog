@@ -49,6 +49,11 @@ function onDeviceReady() {
 
 }
 
+function exitFromApp()
+{
+    navigator.app.exitApp();
+}
+
 function dropTables() {
     db.transaction(function(tx){
 

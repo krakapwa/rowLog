@@ -24,11 +24,16 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadUser() {
+    window.location = 'warningEvents.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
 function onUserInputLoad(){
 
+    $('#index').hide();
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
 }
@@ -45,7 +50,9 @@ function createEvents(){
     var title = "My nice event";
     var location = "Home";
     var notes = "Some notes about this event.";
-    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+    var success = function(message) { 
+        //alert("Success: " + JSON.stringify(message));
+    };
     var error = function(message) { alert("Error: " + message); };
 
 
@@ -65,10 +72,9 @@ function checkUserValues() {
 
         if(($('#txPassword').val() == "roeienopdebosbaan")){
 
-            $('#lbUsers').append('<br>' + 'Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a>');
-            $('#lbUsers').append('<br>' + 'Click confirm to proceed');
-            document.getElementById("addUserButton").disabled = true;
-            document.getElementById("confirmUserButton").disabled = false;
+            $('#lbUsers').append('Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a><br>');
+            $("#addUserButtonId").hide();
+            $("#confirmUserButtonId").show();
         }
         else{
 
@@ -81,7 +87,7 @@ function checkUserValues() {
     } else{
 
         $('#lbUsers').append('<br>' + 'Date of birth must of have 2 digits for day, 2 digits for month and 4 digits for year. First name and last name must be non-empty');
-        document.getElementById("addUserButton").disabled = false;
+            $("#addUserButtonId").show();
 
         return false;
     }
@@ -118,15 +124,24 @@ function countRows(test, callBack){
 }
 
 function confirmUser(){
-    //countRows('User',console.log);
+
+    addUserToDB();
+
+    $("#txPassword").prop('disabled', true);
+    $("#txFirstName").prop('disabled', true);
+    $("#txLastName").prop('disabled', true);
+    $("#txDOBday").prop('disabled', true);
+    $("#txDOBmonth").prop('disabled', true);
+    $("#txDOByear").prop('disabled', true);
+
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
     uploadCsvUser();
     createEvents();
     //alert('Event added.');
     //window.location = 'newEntry.html';
-    window.location = 'warningEvents.html';
-    alert('Event added.');
+    //window.location = 'warningEvents.html';
+    //alert('Event added.');
     //window.location = 'newEntry.html';
 }
 
@@ -137,15 +152,16 @@ function uploadCsvUser(){
 
     fileWrite(); 
     console.log(userFileObject);
-    //uploadFile(userFileObject);
 }
 
 function uploadFile(userFileObject){
-
+    console.log('in uploadFile');
     db.transaction(function(transaction) {
         transaction.executeSql('SELECT * FROM User;', [],
                 function(transaction, result) {
-                    if (result != null && result.rows != null) {
+                    console.log(result);
+                    //if (result != null && result.rows != null) {
+                    if (result != null) {
                         for (var i = 0; i < result.rows.length; i++) {
                             var row = result.rows.item(i);
                         }
@@ -159,24 +175,25 @@ function uploadFile(userFileObject){
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
+                        options.headers = {
+                            Connection: "close"
+                        }
+                        options.chunkedMode = false;
 
                         var params = new Object();
-
-                        params.newFileName = firstName + lastName + getDateStr() + 'userData.csv';
+                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
                         options.params = params;
 
-                        localStorage.setItem("myOptions",JSON.stringify(options));
-                        myOptions  = JSON.parse(localStorage.getItem("myOptions"));
-                        console.log(myOptions);
+                        console.log(options);
 
                         var ft = new FileTransfer();
                         console.log('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+                        console.log('With newFileName: ' + options.params.newFileName);
+                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options);
                     }
 
                 },errorHandler);
-    },errorHandler,nullHandler);
+                },errorHandler,nullHandler);
 }
 
 function getDateStr(){
@@ -210,7 +227,6 @@ function onFSWin (fileSystem) {
 
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
-    //fileEntry.createWriter(gotFileWriter, onFSFail);
     userFileObject = fileEntry;
 
 }
@@ -246,8 +262,7 @@ function onFSFail(error) {
 
 function onDeviceReady() {
     console.log('onDeviceReady');
-
-    document.getElementById("confirmUserButton").disabled = true;
+    $('#confirmUserButtonId').hide();
     // This alert is used to make sure the application is loaded correctly
     // you can comment this out once you have the application working
     console.log('opening database');
@@ -303,6 +318,10 @@ function onDeviceReady() {
                             console.log('user infos OK. Moving to newEntry.html');
                             window.location = 'newEntry.html';
                         }                     
+                    else{
+                        
+                        $('#index').show();
+                    }
                 },errorHandler);
     },errorHandler,nullHandler);
 }

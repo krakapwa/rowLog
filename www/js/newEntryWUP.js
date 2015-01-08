@@ -86,6 +86,15 @@ function onDeviceReady() {
         //window.requestFileSystem(window.PERSISTENT, 1024*1024, onFSWin, onFSFail);
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSWin, onFSFail); 
     }
+    //Need to get user name for csv file creation
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM User;', [],
+                function(transaction, result) {
+                    if (result != null && result.rows != null) {
+                        setUserName(result);
+                    }
+                },errorHandler);
+    },errorHandler,nullHandler);
 
 }
 
@@ -100,7 +109,6 @@ function onFSWin (fileSystem) {
 
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
-    //fileEntry.createWriter(gotFileWriter, onFSFail);
     userFileObject = fileEntry;
 
 }
@@ -134,17 +142,7 @@ function addWUPToDB() {
                     nullHandler,errorHandler);
         });
 
-        //alert("Your data has been saved, you are safe to leave the application. When all fields are completed, click 'Send Data'");
 
-        //Need to get user name for csv file creation
-        db.transaction(function(transaction) {
-            transaction.executeSql('SELECT * FROM User;', [],
-                    function(transaction, result) {
-                        if (result != null && result.rows != null) {
-                            setUserName(result);
-                        }
-                    },errorHandler);
-        },errorHandler,nullHandler);
     //}
 }
 
@@ -200,7 +198,7 @@ function uploadCsvWUP(){
                             csvData += row.inputDate + ',' + row.inputTime + ',' + row.RPE + ',' + row.HRRWUP + ',' + row.HRR60 + '\n';
                         }
 
-                        fileWrite();
+                    fileWrite();    
                     }
 
                 },errorHandler);
@@ -252,9 +250,20 @@ function gotFileWriter(writer) {
 
     writer.write(blob)
 
-    options  = JSON.parse(localStorage.getItem("myOptions"));
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=userFileObject.toURL();
+    options.mimeType="text/csv";
+    options.headers = {
+        Connection: "close"
+    }
+    options.chunkedMode = false;
+
+    var params = new Object();
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'WUP.csv';
+    options.params = params;
+
     console.log(options);
-    options.params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'WUPData.csv';
 
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());

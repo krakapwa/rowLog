@@ -1,739 +1,1162 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-
-  
-  <link rel="stylesheet" type="text/css" href="mystyle.css"> 
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <meta name="viewport" content="width=default-width,
       user-scalable=no">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0, user-scalable=no, minimum-scale=1.0,
-      maximum-scale=1.0"><title>Embedded Sql Example</title>
-    
+      maximum-scale=1.0">
+    <title>Embedded Sql Example</title>
     <script type="text/javascript" src="cordova.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/newEntrySurvey.js"></script>
-  <meta name="generator" content="LibreOffice 4.2.6.3 (Linux)"><style type="text/css"><!-- 
+    <meta name="generator" content="LibreOffice 4.2.6.3 (Linux)">
+    <style type="text/css"><!-- 
 		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Calibri"; font-size:x-small }
-		 --> </style></head><body onload="onSurveyLoad()">
-    
-<h1><a name="top"></a></h1>
-
-
-<table border="0" cellpadding="2" cellspacing="2" width="100%">
+		 --> </style>
+  </head>
+  <body onload="onSurveyLoad()">
+    <h1><a name="top"></a></h1>
+    <table width="100%" cellpadding="2" cellspacing="2" border="0">
       <tbody>
         <tr>
           <td valign="top" width="50%">
-            <h1><a href="newEntry.html">
-    </a></h1><br>
-      <h1><a href="newEntry.html">Back to new entry</a><br>
+            <h1><a href="newEntry.html"> </a></h1>
+            <h1><a href="newEntry.html">Back to new entry</a><br>
             </h1>
-
           </td>
           <td valign="top">
-            <h1><a href="newEntrySurvey.html#instructions">How to fill-in this survey?<br>
-</a></h1>
+            <h1 align="right"><a href="newEntrySurvey.html#instructions">Help<br>
+              </a></h1>
           </td>
         </tr>
       </tbody>
     </table>
-    <hr size="2" width="100%"><h1>Survey<br>
-</h1>
-    <table border="0" cellpadding="0" cellspacing="3" width="100%">
+    <hr size="2" width="100%">
+    <h1>Survey<br>
+    </h1>
+    <table width="100%" cellpadding="0" cellspacing="3" border="0">
       <tbody>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>1) ... heb ik televisie gekeken</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle">
-            <form> <input name="Q1" value="0" type="radio">0 <input name="Q1" value="1" type="radio">1 <input name="Q1" value="2" type="radio">2 <input name="Q1" value="3" checked="checked" type="radio">3 <input name="Q1" value="4" type="radio">4 <input name="Q1" value="5" type="radio">5 <input name="Q1" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>1) ... heb ik televisie gekeken</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0">
+            <form> <input name="Q1" value="0" type="radio">0 <input
+                name="Q1" value="1" type="radio">1 <input name="Q1"
+                value="2" type="radio">2 <input name="Q1" value="3"
+                checked="checked" type="radio">3 <input name="Q1"
+                value="4" type="radio">4 <input name="Q1" value="5"
+                type="radio">5 <input name="Q1" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>2) ... heb ik niet genoeg
-                geslapen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q2" value="0" type="radio">0 <input name="Q2" value="1" type="radio">1 <input name="Q2" value="2" type="radio">2 <input name="Q2" value="3" checked="checked" type="radio">3 <input name="Q2" value="4" type="radio">4 <input name="Q2" value="5" type="radio">5 <input name="Q2" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>2) ... heb ik niet genoeg geslapen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q2" value="0" type="radio">0 <input
+                name="Q2" value="1" type="radio">1 <input name="Q2"
+                value="2" type="radio">2 <input name="Q2" value="3"
+                checked="checked" type="radio">3 <input name="Q2"
+                value="4" type="radio">4 <input name="Q2" value="5"
+                type="radio">5 <input name="Q2" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>3) ... heb ik belangrijke zaken
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>3) ... heb ik belangrijke zaken
                 afgerond</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q3" value="0" type="radio">0 <input name="Q3" value="1" type="radio">1 <input name="Q3" value="2" type="radio">2 <input name="Q3" value="3" checked="checked" type="radio">3 <input name="Q3" value="4" type="radio">4 <input name="Q3" value="5" type="radio">5 <input name="Q3" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q3" value="0" type="radio">0 <input
+                name="Q3" value="1" type="radio">1 <input name="Q3"
+                value="2" type="radio">2 <input name="Q3" value="3"
+                checked="checked" type="radio">3 <input name="Q3"
+                value="4" type="radio">4 <input name="Q3" value="5"
+                type="radio">5 <input name="Q3" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>4) ... kon ik me niet goed
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>4) ... kon ik me niet goed
                 concentreren</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q4" value="0" type="radio">0 <input name="Q4" value="1" type="radio">1 <input name="Q4" value="2" type="radio">2 <input name="Q4" value="3" checked="checked" type="radio">3 <input name="Q4" value="4" type="radio">4 <input name="Q4" value="5" type="radio">5 <input name="Q4" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q4" value="0" type="radio">0 <input
+                name="Q4" value="1" type="radio">1 <input name="Q4"
+                value="2" type="radio">2 <input name="Q4" value="3"
+                checked="checked" type="radio">3 <input name="Q4"
+                value="4" type="radio">4 <input name="Q4" value="5"
+                type="radio">5 <input name="Q4" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>5) ... stoorde ik me aan alles</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q5" value="0" type="radio">0 <input name="Q5" value="1" type="radio">1 <input name="Q5" value="2" type="radio">2 <input name="Q5" value="3" checked="checked" type="radio">3 <input name="Q5" value="4" type="radio">4 <input name="Q5" value="5" type="radio">5 <input name="Q5" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>5) ... stoorde ik me aan alles</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q5" value="0" type="radio">0 <input
+                name="Q5" value="1" type="radio">1 <input name="Q5"
+                value="2" type="radio">2 <input name="Q5" value="3"
+                checked="checked" type="radio">3 <input name="Q5"
+                value="4" type="radio">4 <input name="Q5" value="5"
+                type="radio">5 <input name="Q5" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>6) ... heb ik gelachen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q6" value="0" type="radio">0 <input name="Q6" value="1" type="radio">1 <input name="Q6" value="2" type="radio">2 <input name="Q6" value="3" checked="checked" type="radio">3 <input name="Q6" value="4" type="radio">4 <input name="Q6" value="5" type="radio">5 <input name="Q6" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>6) ... heb ik gelachen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q6" value="0" type="radio">0 <input
+                name="Q6" value="1" type="radio">1 <input name="Q6"
+                value="2" type="radio">2 <input name="Q6" value="3"
+                checked="checked" type="radio">3 <input name="Q6"
+                value="4" type="radio">4 <input name="Q6" value="5"
+                type="radio">5 <input name="Q6" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>7) ... voelde ik me lichamelijk
-                slecht</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q7" value="0" type="radio">0 <input name="Q7" value="1" type="radio">1 <input name="Q7" value="2" type="radio">2 <input name="Q7" value="3" checked="checked" type="radio">3 <input name="Q7" value="4" type="radio">4 <input name="Q7" value="5" type="radio">5 <input name="Q7" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>7) ... voelde ik me lichamelijk slecht</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q7" value="0" type="radio">0 <input
+                name="Q7" value="1" type="radio">1 <input name="Q7"
+                value="2" type="radio">2 <input name="Q7" value="3"
+                checked="checked" type="radio">3 <input name="Q7"
+                value="4" type="radio">4 <input name="Q7" value="5"
+                type="radio">5 <input name="Q7" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>8) ... was ik in een slechte
-                stemming</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q8" value="0" type="radio">0 <input name="Q8" value="1" type="radio">1 <input name="Q8" value="2" type="radio">2 <input name="Q8" value="3" checked="checked" type="radio">3 <input name="Q8" value="4" type="radio">4 <input name="Q8" value="5" type="radio">5 <input name="Q8" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>8) ... was ik in een slechte stemming</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q8" value="0" type="radio">0 <input
+                name="Q8" value="1" type="radio">1 <input name="Q8"
+                value="2" type="radio">2 <input name="Q8" value="3"
+                checked="checked" type="radio">3 <input name="Q8"
+                value="4" type="radio">4 <input name="Q8" value="5"
+                type="radio">5 <input name="Q8" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>9) ... voelde ik me lichamelijk
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>9) ... voelde ik me lichamelijk
                 ontspannen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q9" value="0" type="radio">0 <input name="Q9" value="1" type="radio">1 <input name="Q9" value="2" type="radio">2 <input name="Q9" value="3" checked="checked" type="radio">3 <input name="Q9" value="4" type="radio">4 <input name="Q9" value="5" type="radio">5 <input name="Q9" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q9" value="0" type="radio">0 <input
+                name="Q9" value="1" type="radio">1 <input name="Q9"
+                value="2" type="radio">2 <input name="Q9" value="3"
+                checked="checked" type="radio">3 <input name="Q9"
+                value="4" type="radio">4 <input name="Q9" value="5"
+                type="radio">5 <input name="Q9" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>10) ...was ik opgewekt</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q10" value="0" type="radio">0 <input name="Q10" value="1" type="radio">1 <input name="Q10" value="2" type="radio">2 <input name="Q10" value="3" checked="checked" type="radio">3 <input name="Q10" value="4" type="radio">4 <input name="Q10" value="5" type="radio">5 <input name="Q10" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>10) ...was ik opgewekt</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q10" value="0" type="radio">0 <input
+                name="Q10" value="1" type="radio">1 <input name="Q10"
+                value="2" type="radio">2 <input name="Q10" value="3"
+                checked="checked" type="radio">3 <input name="Q10"
+                value="4" type="radio">4 <input name="Q10" value="5"
+                type="radio">5 <input name="Q10" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>11) ... had ik moeite mij te
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>11) ... had ik moeite mij te
                 concentreren</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q11" value="0" type="radio">0 <input name="Q11" value="1" type="radio">1 <input name="Q11" value="2" type="radio">2 <input name="Q11" value="3" checked="checked" type="radio">3 <input name="Q11" value="4" type="radio">4 <input name="Q11" value="5" type="radio">5 <input name="Q11" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q11" value="0" type="radio">0 <input
+                name="Q11" value="1" type="radio">1 <input name="Q11"
+                value="2" type="radio">2 <input name="Q11" value="3"
+                checked="checked" type="radio">3 <input name="Q11"
+                value="4" type="radio">4 <input name="Q11" value="5"
+                type="radio">5 <input name="Q11" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>12) ... maakte ik me zorgen over
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>12) ... maakte ik me zorgen over
                 onopgeloste problemen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q12" value="0" type="radio">0 <input name="Q12" value="1" type="radio">1 <input name="Q12" value="2" type="radio">2 <input name="Q12" value="3" checked="checked" type="radio">3 <input name="Q12" value="4" type="radio">4 <input name="Q12" value="5" type="radio">5 <input name="Q12" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q12" value="0" type="radio">0 <input
+                name="Q12" value="1" type="radio">1 <input name="Q12"
+                value="2" type="radio">2 <input name="Q12" value="3"
+                checked="checked" type="radio">3 <input name="Q12"
+                value="4" type="radio">4 <input name="Q12" value="5"
+                type="radio">5 <input name="Q12" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>13) ... voelde ik me op mijn
-                gemak</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q13" value="0" type="radio">0 <input name="Q13" value="1" type="radio">1 <input name="Q13" value="2" type="radio">2 <input name="Q13" value="3" checked="checked" type="radio">3 <input name="Q13" value="4" type="radio">4 <input name="Q13" value="5" type="radio">5 <input name="Q13" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>13) ... voelde ik me op mijn gemak</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q13" value="0" type="radio">0 <input
+                name="Q13" value="1" type="radio">1 <input name="Q13"
+                value="2" type="radio">2 <input name="Q13" value="3"
+                checked="checked" type="radio">3 <input name="Q13"
+                value="4" type="radio">4 <input name="Q13" value="5"
+                type="radio">5 <input name="Q13" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>14) ... had ik lol met vrienden</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q14" value="0" type="radio">0 <input name="Q14" value="1" type="radio">1 <input name="Q14" value="2" type="radio">2 <input name="Q14" value="3" checked="checked" type="radio">3 <input name="Q14" value="4" type="radio">4 <input name="Q14" value="5" type="radio">5 <input name="Q14" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>14) ... had ik lol met vrienden</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q14" value="0" type="radio">0 <input
+                name="Q14" value="1" type="radio">1 <input name="Q14"
+                value="2" type="radio">2 <input name="Q14" value="3"
+                checked="checked" type="radio">3 <input name="Q14"
+                value="4" type="radio">4 <input name="Q14" value="5"
+                type="radio">5 <input name="Q14" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>15) ... had ik hoofdpijn</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q15" value="0" type="radio">0 <input name="Q15" value="1" type="radio">1 <input name="Q15" value="2" type="radio">2 <input name="Q15" value="3" checked="checked" type="radio">3 <input name="Q15" value="4" type="radio">4 <input name="Q15" value="5" type="radio">5 <input name="Q15" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>15) ... had ik hoofdpijn</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q15" value="0" type="radio">0 <input
+                name="Q15" value="1" type="radio">1 <input name="Q15"
+                value="2" type="radio">2 <input name="Q15" value="3"
+                checked="checked" type="radio">3 <input name="Q15"
+                value="4" type="radio">4 <input name="Q15" value="5"
+                type="radio">5 <input name="Q15" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>16) ... was ik moe van mijn werk</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q16" value="0" type="radio">0 <input name="Q16" value="1" type="radio">1 <input name="Q16" value="2" type="radio">2 <input name="Q16" value="3" checked="checked" type="radio">3 <input name="Q16" value="4" type="radio">4 <input name="Q16" value="5" type="radio">5 <input name="Q16" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>16) ... was ik moe van mijn werk</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q16" value="0" type="radio">0 <input
+                name="Q16" value="1" type="radio">1 <input name="Q16"
+                value="2" type="radio">2 <input name="Q16" value="3"
+                checked="checked" type="radio">3 <input name="Q16"
+                value="4" type="radio">4 <input name="Q16" value="5"
+                type="radio">5 <input name="Q16" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>17) ... lukten de dingen die ik
-                deed</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q17" value="0" type="radio">0 <input name="Q17" value="1" type="radio">1 <input name="Q17" value="2" type="radio">2 <input name="Q17" value="3" checked="checked" type="radio">3 <input name="Q17" value="4" type="radio">4 <input name="Q17" value="5" type="radio">5 <input name="Q17" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>17) ... lukten de dingen die ik deed</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q17" value="0" type="radio">0 <input
+                name="Q17" value="1" type="radio">1 <input name="Q17"
+                value="2" type="radio">2 <input name="Q17" value="3"
+                checked="checked" type="radio">3 <input name="Q17"
+                value="4" type="radio">4 <input name="Q17" value="5"
+                type="radio">5 <input name="Q17" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>18) ... kon ik mijn hoofd niet
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>18) ... kon ik mijn hoofd niet
                 leegmaken van gedachten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q18" value="0" type="radio">0 <input name="Q18" value="1" type="radio">1 <input name="Q18" value="2" type="radio">2 <input name="Q18" value="3" checked="checked" type="radio">3 <input name="Q18" value="4" type="radio">4 <input name="Q18" value="5" type="radio">5 <input name="Q18" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q18" value="0" type="radio">0 <input
+                name="Q18" value="1" type="radio">1 <input name="Q18"
+                value="2" type="radio">2 <input name="Q18" value="3"
+                checked="checked" type="radio">3 <input name="Q18"
+                value="4" type="radio">4 <input name="Q18" value="5"
+                type="radio">5 <input name="Q18" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>19) ... viel ik tevreden en
-                ontspannen in slaap</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q19" value="0" type="radio">0 <input name="Q19" value="1" type="radio">1 <input name="Q19" value="2" type="radio">2 <input name="Q19" value="3" checked="checked" type="radio">3 <input name="Q19" value="4" type="radio">4 <input name="Q19" value="5" type="radio">5 <input name="Q19" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>19) ... viel ik tevreden en ontspannen
+                in slaap</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q19" value="0" type="radio">0 <input
+                name="Q19" value="1" type="radio">1 <input name="Q19"
+                value="2" type="radio">2 <input name="Q19" value="3"
+                checked="checked" type="radio">3 <input name="Q19"
+                value="4" type="radio">4 <input name="Q19" value="5"
+                type="radio">5 <input name="Q19" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>20) ... voelde ik me niet
-                prettig</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q20" value="0" type="radio">0 <input name="Q20" value="1" type="radio">1 <input name="Q20" value="2" type="radio">2 <input name="Q20" value="3" checked="checked" type="radio">3 <input name="Q20" value="4" type="radio">4 <input name="Q20" value="5" type="radio">5 <input name="Q20" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>20) ... voelde ik me niet prettig</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q20" value="0" type="radio">0 <input
+                name="Q20" value="1" type="radio">1 <input name="Q20"
+                value="2" type="radio">2 <input name="Q20" value="3"
+                checked="checked" type="radio">3 <input name="Q20"
+                value="4" type="radio">4 <input name="Q20" value="5"
+                type="radio">5 <input name="Q20" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>21) ... was ik geïrriteerd door
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>21) ... was ik geïrriteerd door
                 anderen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q21" value="0" type="radio">0 <input name="Q21" value="1" type="radio">1 <input name="Q21" value="2" type="radio">2 <input name="Q21" value="3" checked="checked" type="radio">3 <input name="Q21" value="4" type="radio">4 <input name="Q21" value="5" type="radio">5 <input name="Q21" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q21" value="0" type="radio">0 <input
+                name="Q21" value="1" type="radio">1 <input name="Q21"
+                value="2" type="radio">2 <input name="Q21" value="3"
+                checked="checked" type="radio">3 <input name="Q21"
+                value="4" type="radio">4 <input name="Q21" value="5"
+                type="radio">5 <input name="Q21" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>22) ... voelde ik me somber</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q22" value="0" type="radio">0 <input name="Q22" value="1" type="radio">1 <input name="Q22" value="2" type="radio">2 <input name="Q22" value="3" checked="checked" type="radio">3 <input name="Q22" value="4" type="radio">4 <input name="Q22" value="5" type="radio">5 <input name="Q22" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>22) ... voelde ik me somber</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q22" value="0" type="radio">0 <input
+                name="Q22" value="1" type="radio">1 <input name="Q22"
+                value="2" type="radio">2 <input name="Q22" value="3"
+                checked="checked" type="radio">3 <input name="Q22"
+                value="4" type="radio">4 <input name="Q22" value="5"
+                type="radio">5 <input name="Q22" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>23) ... ben ik bij goede
-                vrienden op bezoek geweest</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q23" value="0" type="radio">0 <input name="Q23" value="1" type="radio">1 <input name="Q23" value="2" type="radio">2 <input name="Q23" value="3" checked="checked" type="radio">3 <input name="Q23" value="4" type="radio">4 <input name="Q23" value="5" type="radio">5 <input name="Q23" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>23) ... ben ik bij goede vrienden op
+                bezoek geweest</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q23" value="0" type="radio">0 <input
+                name="Q23" value="1" type="radio">1 <input name="Q23"
+                value="2" type="radio">2 <input name="Q23" value="3"
+                checked="checked" type="radio">3 <input name="Q23"
+                value="4" type="radio">4 <input name="Q23" value="5"
+                type="radio">5 <input name="Q23" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>24) ... voelde ik me depressief</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q24" value="0" type="radio">0 <input name="Q24" value="1" type="radio">1 <input name="Q24" value="2" type="radio">2 <input name="Q24" value="3" checked="checked" type="radio">3 <input name="Q24" value="4" type="radio">4 <input name="Q24" value="5" type="radio">5 <input name="Q24" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>24) ... voelde ik me depressief</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q24" value="0" type="radio">0 <input
+                name="Q24" value="1" type="radio">1 <input name="Q24"
+                value="2" type="radio">2 <input name="Q24" value="3"
+                checked="checked" type="radio">3 <input name="Q24"
+                value="4" type="radio">4 <input name="Q24" value="5"
+                type="radio">5 <input name="Q24" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>25) ... was ik doodmoe na mijn
-                werk</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q25" value="0" type="radio">0 <input name="Q25" value="1" type="radio">1 <input name="Q25" value="2" type="radio">2 <input name="Q25" value="3" checked="checked" type="radio">3 <input name="Q25" value="4" type="radio">4 <input name="Q25" value="5" type="radio">5 <input name="Q25" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>25) ... was ik doodmoe na mijn werk</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q25" value="0" type="radio">0 <input
+                name="Q25" value="1" type="radio">1 <input name="Q25"
+                value="2" type="radio">2 <input name="Q25" value="3"
+                checked="checked" type="radio">3 <input name="Q25"
+                value="4" type="radio">4 <input name="Q25" value="5"
+                type="radio">5 <input name="Q25" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>26) ... werkten anderen op mijn
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>26) ... werkten anderen op mijn
                 zenuwen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q26" value="0" type="radio">0 <input name="Q26" value="1" type="radio">1 <input name="Q26" value="2" type="radio">2 <input name="Q26" value="3" checked="checked" type="radio">3 <input name="Q26" value="4" type="radio">4 <input name="Q26" value="5" type="radio">5 <input name="Q26" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q26" value="0" type="radio">0 <input
+                name="Q26" value="1" type="radio">1 <input name="Q26"
+                value="2" type="radio">2 <input name="Q26" value="3"
+                checked="checked" type="radio">3 <input name="Q26"
+                value="4" type="radio">4 <input name="Q26" value="5"
+                type="radio">5 <input name="Q26" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>27) ... heb ik goed geslapen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q27" value="0" type="radio">0 <input name="Q27" value="1" type="radio">1 <input name="Q27" value="2" type="radio">2 <input name="Q27" value="3" checked="checked" type="radio">3 <input name="Q27" value="4" type="radio">4 <input name="Q27" value="5" type="radio">5 <input name="Q27" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>27) ... heb ik goed geslapen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q27" value="0" type="radio">0 <input
+                name="Q27" value="1" type="radio">1 <input name="Q27"
+                value="2" type="radio">2 <input name="Q27" value="3"
+                checked="checked" type="radio">3 <input name="Q27"
+                value="4" type="radio">4 <input name="Q27" value="5"
+                type="radio">5 <input name="Q27" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>28) .... voelde ik me gespannen
-                of geremd</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q28" value="0" type="radio">0 <input name="Q28" value="1" type="radio">1 <input name="Q28" value="2" type="radio">2 <input name="Q28" value="3" checked="checked" type="radio">3 <input name="Q28" value="4" type="radio">4 <input name="Q28" value="5" type="radio">5 <input name="Q28" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>28) .... voelde ik me gespannen of
+                geremd</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q28" value="0" type="radio">0 <input
+                name="Q28" value="1" type="radio">1 <input name="Q28"
+                value="2" type="radio">2 <input name="Q28" value="3"
+                checked="checked" type="radio">3 <input name="Q28"
+                value="4" type="radio">4 <input name="Q28" value="5"
+                type="radio">5 <input name="Q28" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>29) ... voelde ik me lichamelijk
-                fit</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q29" value="0" type="radio">0 <input name="Q29" value="1" type="radio">1 <input name="Q29" value="2" type="radio">2 <input name="Q29" value="3" checked="checked" type="radio">3 <input name="Q29" value="4" type="radio">4 <input name="Q29" value="5" type="radio">5 <input name="Q29" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>29) ... voelde ik me lichamelijk fit</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q29" value="0" type="radio">0 <input
+                name="Q29" value="1" type="radio">1 <input name="Q29"
+                value="2" type="radio">2 <input name="Q29" value="3"
+                checked="checked" type="radio">3 <input name="Q29"
+                value="4" type="radio">4 <input name="Q29" value="5"
+                type="radio">5 <input name="Q29" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>30) ... had ik overal genoeg van</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q30" value="0" type="radio">0 <input name="Q30" value="1" type="radio">1 <input name="Q30" value="2" type="radio">2 <input name="Q30" value="3" checked="checked" type="radio">3 <input name="Q30" value="4" type="radio">4 <input name="Q30" value="5" type="radio">5 <input name="Q30" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>30) ... had ik overal genoeg van</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q30" value="0" type="radio">0 <input
+                name="Q30" value="1" type="radio">1 <input name="Q30"
+                value="2" type="radio">2 <input name="Q30" value="3"
+                checked="checked" type="radio">3 <input name="Q30"
+                value="4" type="radio">4 <input name="Q30" value="5"
+                type="radio">5 <input name="Q30" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>31) ... had ik nergens zin in</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q31" value="0" type="radio">0 <input name="Q31" value="1" type="radio">1 <input name="Q31" value="2" type="radio">2 <input name="Q31" value="3" checked="checked" type="radio">3 <input name="Q31" value="4" type="radio">4 <input name="Q31" value="5" type="radio">5 <input name="Q31" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>31) ... had ik nergens zin in</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q31" value="0" type="radio">0 <input
+                name="Q31" value="1" type="radio">1 <input name="Q31"
+                value="2" type="radio">2 <input name="Q31" value="3"
+                checked="checked" type="radio">3 <input name="Q31"
+                value="4" type="radio">4 <input name="Q31" value="5"
+                type="radio">5 <input name="Q31" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>32) ... had ik het gevoel dat ik
-                goed moest presteren in het bijzijn van anderen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q32" value="0" type="radio">0 <input name="Q32" value="1" type="radio">1 <input name="Q32" value="2" type="radio">2 <input name="Q32" value="3" checked="checked" type="radio">3 <input name="Q32" value="4" type="radio">4 <input name="Q32" value="5" type="radio">5 <input name="Q32" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>32) ... had ik het gevoel dat ik goed
+                moest presteren in het bijzijn van anderen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q32" value="0" type="radio">0 <input
+                name="Q32" value="1" type="radio">1 <input name="Q32"
+                value="2" type="radio">2 <input name="Q32" value="3"
+                checked="checked" type="radio">3 <input name="Q32"
+                value="4" type="radio">4 <input name="Q32" value="5"
+                type="radio">5 <input name="Q32" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>33) ... had ik plezier</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q33" value="0" type="radio">0 <input name="Q33" value="1" type="radio">1 <input name="Q33" value="2" type="radio">2 <input name="Q33" value="3" checked="checked" type="radio">3 <input name="Q33" value="4" type="radio">4 <input name="Q33" value="5" type="radio">5 <input name="Q33" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>33) ... had ik plezier</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q33" value="0" type="radio">0 <input
+                name="Q33" value="1" type="radio">1 <input name="Q33"
+                value="2" type="radio">2 <input name="Q33" value="3"
+                checked="checked" type="radio">3 <input name="Q33"
+                value="4" type="radio">4 <input name="Q33" value="5"
+                type="radio">5 <input name="Q33" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>34) ... was ik in een goede
-                stemming</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q34" value="0" type="radio">0 <input name="Q34" value="1" type="radio">1 <input name="Q34" value="2" type="radio">2 <input name="Q34" value="3" checked="checked" type="radio">3 <input name="Q34" value="4" type="radio">4 <input name="Q34" value="5" type="radio">5 <input name="Q34" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>34) ... was ik in een goede stemming</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q34" value="0" type="radio">0 <input
+                name="Q34" value="1" type="radio">1 <input name="Q34"
+                value="2" type="radio">2 <input name="Q34" value="3"
+                checked="checked" type="radio">3 <input name="Q34"
+                value="4" type="radio">4 <input name="Q34" value="5"
+                type="radio">5 <input name="Q34" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>35) ... was ik oververmoeid</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q35" value="0" type="radio">0 <input name="Q35" value="1" type="radio">1 <input name="Q35" value="2" type="radio">2 <input name="Q35" value="3" checked="checked" type="radio">3 <input name="Q35" value="4" type="radio">4 <input name="Q35" value="5" type="radio">5 <input name="Q35" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>35) ... was ik oververmoeid</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q35" value="0" type="radio">0 <input
+                name="Q35" value="1" type="radio">1 <input name="Q35"
+                value="2" type="radio">2 <input name="Q35" value="3"
+                checked="checked" type="radio">3 <input name="Q35"
+                value="4" type="radio">4 <input name="Q35" value="5"
+                type="radio">5 <input name="Q35" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>36) ... sliep ik onrustig</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q36" value="0" type="radio">0 <input name="Q36" value="1" type="radio">1 <input name="Q36" value="2" type="radio">2 <input name="Q36" value="3" checked="checked" type="radio">3 <input name="Q36" value="4" type="radio">4 <input name="Q36" value="5" type="radio">5 <input name="Q36" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>36) ... sliep ik onrustig</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q36" value="0" type="radio">0 <input
+                name="Q36" value="1" type="radio">1 <input name="Q36"
+                value="2" type="radio">2 <input name="Q36" value="3"
+                checked="checked" type="radio">3 <input name="Q36"
+                value="4" type="radio">4 <input name="Q36" value="5"
+                type="radio">5 <input name="Q36" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>37) ... ergerde ik me</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q37" value="0" type="radio">0 <input name="Q37" value="1" type="radio">1 <input name="Q37" value="2" type="radio">2 <input name="Q37" value="3" checked="checked" type="radio">3 <input name="Q37" value="4" type="radio">4 <input name="Q37" value="5" type="radio">5 <input name="Q37" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>37) ... ergerde ik me</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q37" value="0" type="radio">0 <input
+                name="Q37" value="1" type="radio">1 <input name="Q37"
+                value="2" type="radio">2 <input name="Q37" value="3"
+                checked="checked" type="radio">3 <input name="Q37"
+                value="4" type="radio">4 <input name="Q37" value="5"
+                type="radio">5 <input name="Q37" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>38) ... voelde ik me alsof ik
-                alles af kon krijgen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q38" value="0" type="radio">0 <input name="Q38" value="1" type="radio">1 <input name="Q38" value="2" type="radio">2 <input name="Q38" value="3" checked="checked" type="radio">3 <input name="Q38" value="4" type="radio">4 <input name="Q38" value="5" type="radio">5 <input name="Q38" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>38) ... voelde ik me alsof ik alles af
+                kon krijgen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q38" value="0" type="radio">0 <input
+                name="Q38" value="1" type="radio">1 <input name="Q38"
+                value="2" type="radio">2 <input name="Q38" value="3"
+                checked="checked" type="radio">3 <input name="Q38"
+                value="4" type="radio">4 <input name="Q38" value="5"
+                type="radio">5 <input name="Q38" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>39) ... was ik van slag</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q39" value="0" type="radio">0 <input name="Q39" value="1" type="radio">1 <input name="Q39" value="2" type="radio">2 <input name="Q39" value="3" checked="checked" type="radio">3 <input name="Q39" value="4" type="radio">4 <input name="Q39" value="5" type="radio">5 <input name="Q39" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>39) ... was ik van slag</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q39" value="0" type="radio">0 <input
+                name="Q39" value="1" type="radio">1 <input name="Q39"
+                value="2" type="radio">2 <input name="Q39" value="3"
+                checked="checked" type="radio">3 <input name="Q39"
+                value="4" type="radio">4 <input name="Q39" value="5"
+                type="radio">5 <input name="Q39" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>40) ... heb ik beslissingen voor
-                me uit geschoven</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q40" value="0" type="radio">0 <input name="Q40" value="1" type="radio">1 <input name="Q40" value="2" type="radio">2 <input name="Q40" value="3" checked="checked" type="radio">3 <input name="Q40" value="4" type="radio">4 <input name="Q40" value="5" type="radio">5 <input name="Q40" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>40) ... heb ik beslissingen voor me
+                uit geschoven</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q40" value="0" type="radio">0 <input
+                name="Q40" value="1" type="radio">1 <input name="Q40"
+                value="2" type="radio">2 <input name="Q40" value="3"
+                checked="checked" type="radio">3 <input name="Q40"
+                value="4" type="radio">4 <input name="Q40" value="5"
+                type="radio">5 <input name="Q40" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>41) ... heb ik in het dagelijks
-                leven belangrijke beslissingen genomen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q41" value="0" type="radio">0 <input name="Q41" value="1" type="radio">1 <input name="Q41" value="2" type="radio">2 <input name="Q41" value="3" checked="checked" type="radio">3 <input name="Q41" value="4" type="radio">4 <input name="Q41" value="5" type="radio">5 <input name="Q41" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>41) ... heb ik in het dagelijks leven
+                belangrijke beslissingen genomen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q41" value="0" type="radio">0 <input
+                name="Q41" value="1" type="radio">1 <input name="Q41"
+                value="2" type="radio">2 <input name="Q41" value="3"
+                checked="checked" type="radio">3 <input name="Q41"
+                value="4" type="radio">4 <input name="Q41" value="5"
+                type="radio">5 <input name="Q41" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>42) ... voelde ik me lichamelijk
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>42) ... voelde ik me lichamelijk
                 uitgeput</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q42" value="0" type="radio">0 <input name="Q42" value="1" type="radio">1 <input name="Q42" value="2" type="radio">2 <input name="Q42" value="3" checked="checked" type="radio">3 <input name="Q42" value="4" type="radio">4 <input name="Q42" value="5" type="radio">5 <input name="Q42" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q42" value="0" type="radio">0 <input
+                name="Q42" value="1" type="radio">1 <input name="Q42"
+                value="2" type="radio">2 <input name="Q42" value="3"
+                checked="checked" type="radio">3 <input name="Q42"
+                value="4" type="radio">4 <input name="Q42" value="5"
+                type="radio">5 <input name="Q42" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>43) ... was ik blij</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q43" value="0" type="radio">0 <input name="Q43" value="1" type="radio">1 <input name="Q43" value="2" type="radio">2 <input name="Q43" value="3" checked="checked" type="radio">3 <input name="Q43" value="4" type="radio">4 <input name="Q43" value="5" type="radio">5 <input name="Q43" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>43) ... was ik blij</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q43" value="0" type="radio">0 <input
+                name="Q43" value="1" type="radio">1 <input name="Q43"
+                value="2" type="radio">2 <input name="Q43" value="3"
+                checked="checked" type="radio">3 <input name="Q43"
+                value="4" type="radio">4 <input name="Q43" value="5"
+                type="radio">5 <input name="Q43" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>44) ... voelde ik dat ik onder
-                druk stond</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q44" value="0" type="radio">0 <input name="Q44" value="1" type="radio">1 <input name="Q44" value="2" type="radio">2 <input name="Q44" value="3" checked="checked" type="radio">3 <input name="Q44" value="4" type="radio">4 <input name="Q44" value="5" type="radio">5 <input name="Q44" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>44) ... voelde ik dat ik onder druk
+                stond</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q44" value="0" type="radio">0 <input
+                name="Q44" value="1" type="radio">1 <input name="Q44"
+                value="2" type="radio">2 <input name="Q44" value="3"
+                checked="checked" type="radio">3 <input name="Q44"
+                value="4" type="radio">4 <input name="Q44" value="5"
+                type="radio">5 <input name="Q44" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>45) ... was alles teveel voor me</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q45" value="0" type="radio">0 <input name="Q45" value="1" type="radio">1 <input name="Q45" value="2" type="radio">2 <input name="Q45" value="3" checked="checked" type="radio">3 <input name="Q45" value="4" type="radio">4 <input name="Q45" value="5" type="radio">5 <input name="Q45" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>45) ... was alles teveel voor me</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q45" value="0" type="radio">0 <input
+                name="Q45" value="1" type="radio">1 <input name="Q45"
+                value="2" type="radio">2 <input name="Q45" value="3"
+                checked="checked" type="radio">3 <input name="Q45"
+                value="4" type="radio">4 <input name="Q45" value="5"
+                type="radio">5 <input name="Q45" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>46) ... heb ik heel licht
-                geslapen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q46" value="0" type="radio">0 <input name="Q46" value="1" type="radio">1 <input name="Q46" value="2" type="radio">2 <input name="Q46" value="3" checked="checked" type="radio">3 <input name="Q46" value="4" type="radio">4 <input name="Q46" value="5" type="radio">5 <input name="Q46" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>46) ... heb ik heel licht geslapen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q46" value="0" type="radio">0 <input
+                name="Q46" value="1" type="radio">1 <input name="Q46"
+                value="2" type="radio">2 <input name="Q46" value="3"
+                checked="checked" type="radio">3 <input name="Q46"
+                value="4" type="radio">4 <input name="Q46" value="5"
+                type="radio">5 <input name="Q46" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>47) ... voelde ik me tevreden</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q47" value="0" type="radio">0 <input name="Q47" value="1" type="radio">1 <input name="Q47" value="2" type="radio">2 <input name="Q47" value="3" checked="checked" type="radio">3 <input name="Q47" value="4" type="radio">4 <input name="Q47" value="5" type="radio">5 <input name="Q47" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>47) ... voelde ik me tevreden</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q47" value="0" type="radio">0 <input
+                name="Q47" value="1" type="radio">1 <input name="Q47"
+                value="2" type="radio">2 <input name="Q47" value="3"
+                checked="checked" type="radio">3 <input name="Q47"
+                value="4" type="radio">4 <input name="Q47" value="5"
+                type="radio">5 <input name="Q47" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>48) ... was ik boos op iemand</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q48" value="0" type="radio">0 <input name="Q48" value="1" type="radio">1 <input name="Q48" value="2" type="radio">2 <input name="Q48" value="3" checked="checked" type="radio">3 <input name="Q48" value="4" type="radio">4 <input name="Q48" value="5" type="radio">5 <input name="Q48" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>48) ... was ik boos op iemand</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q48" value="0" type="radio">0 <input
+                name="Q48" value="1" type="radio">1 <input name="Q48"
+                value="2" type="radio">2 <input name="Q48" value="3"
+                checked="checked" type="radio">3 <input name="Q48"
+                value="4" type="radio">4 <input name="Q48" value="5"
+                type="radio">5 <input name="Q48" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>49) ... had ik een aantal goede
-                ideeën</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q49" value="0" type="radio">0 <input name="Q49" value="1" type="radio">1 <input name="Q49" value="2" type="radio">2 <input name="Q49" value="3" checked="checked" type="radio">3 <input name="Q49" value="4" type="radio">4 <input name="Q49" value="5" type="radio">5 <input name="Q49" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>49) ... had ik een aantal goede ideeën</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q49" value="0" type="radio">0 <input
+                name="Q49" value="1" type="radio">1 <input name="Q49"
+                value="2" type="radio">2 <input name="Q49" value="3"
+                checked="checked" type="radio">3 <input name="Q49"
+                value="4" type="radio">4 <input name="Q49" value="5"
+                type="radio">5 <input name="Q49" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>50) ... deden delen van mijn
-                lichaam pijn</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q50" value="0" type="radio">0 <input name="Q50" value="1" type="radio">1 <input name="Q50" value="2" type="radio">2 <input name="Q50" value="3" checked="checked" type="radio">3 <input name="Q50" value="4" type="radio">4 <input name="Q50" value="5" type="radio">5 <input name="Q50" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>50) ... deden delen van mijn lichaam
+                pijn</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q50" value="0" type="radio">0 <input
+                name="Q50" value="1" type="radio">1 <input name="Q50"
+                value="2" type="radio">2 <input name="Q50" value="3"
+                checked="checked" type="radio">3 <input name="Q50"
+                value="4" type="radio">4 <input name="Q50" value="5"
+                type="radio">5 <input name="Q50" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>51) ... kon ik tijdens de pauzes
-                niet uitrusten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q51" value="0" type="radio">0 <input name="Q51" value="1" type="radio">1 <input name="Q51" value="2" type="radio">2 <input name="Q51" value="3" checked="checked" type="radio">3 <input name="Q51" value="4" type="radio">4 <input name="Q51" value="5" type="radio">5 <input name="Q51" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>51) ... kon ik tijdens de pauzes niet
+                uitrusten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q51" value="0" type="radio">0 <input
+                name="Q51" value="1" type="radio">1 <input name="Q51"
+                value="2" type="radio">2 <input name="Q51" value="3"
+                checked="checked" type="radio">3 <input name="Q51"
+                value="4" type="radio">4 <input name="Q51" value="5"
+                type="radio">5 <input name="Q51" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>52) ... was ik ervan overtuigd
-                dat ik mijn doelen in de sport kon halen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q52" value="0" type="radio">0 <input name="Q52" value="1" type="radio">1 <input name="Q52" value="2" type="radio">2 <input name="Q52" value="3" checked="checked" type="radio">3 <input name="Q52" value="4" type="radio">4 <input name="Q52" value="5" type="radio">5 <input name="Q52" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>52) ... was ik ervan overtuigd dat ik
+                mijn doelen in de sport kon halen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q52" value="0" type="radio">0 <input
+                name="Q52" value="1" type="radio">1 <input name="Q52"
+                value="2" type="radio">2 <input name="Q52" value="3"
+                checked="checked" type="radio">3 <input name="Q52"
+                value="4" type="radio">4 <input name="Q52" value="5"
+                type="radio">5 <input name="Q52" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>53) ... herstelde ik lichamelijk
-                goed</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q53" value="0" type="radio">0 <input name="Q53" value="1" type="radio">1 <input name="Q53" value="2" type="radio">2 <input name="Q53" value="3" checked="checked" type="radio">3 <input name="Q53" value="4" type="radio">4 <input name="Q53" value="5" type="radio">5 <input name="Q53" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>53) ... herstelde ik lichamelijk goed</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q53" value="0" type="radio">0 <input
+                name="Q53" value="1" type="radio">1 <input name="Q53"
+                value="2" type="radio">2 <input name="Q53" value="3"
+                checked="checked" type="radio">3 <input name="Q53"
+                value="4" type="radio">4 <input name="Q53" value="5"
+                type="radio">5 <input name="Q53" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>54) ... voelde ik me opgebrand
-                door mijn sport</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q54" value="0" type="radio">0 <input name="Q54" value="1" type="radio">1 <input name="Q54" value="2" type="radio">2 <input name="Q54" value="3" checked="checked" type="radio">3 <input name="Q54" value="4" type="radio">4 <input name="Q54" value="5" type="radio">5 <input name="Q54" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>54) ... voelde ik me opgebrand door
+                mijn sport</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q54" value="0" type="radio">0 <input
+                name="Q54" value="1" type="radio">1 <input name="Q54"
+                value="2" type="radio">2 <input name="Q54" value="3"
+                checked="checked" type="radio">3 <input name="Q54"
+                value="4" type="radio">4 <input name="Q54" value="5"
+                type="radio">5 <input name="Q54" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>55) ... heb ik veel waardevolle
-                dingen bereikt in mijn sport</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q55" value="0" type="radio">0 <input name="Q55" value="1" type="radio">1 <input name="Q55" value="2" type="radio">2 <input name="Q55" value="3" checked="checked" type="radio">3 <input name="Q55" value="4" type="radio">4 <input name="Q55" value="5" type="radio">5 <input name="Q55" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>55) ... heb ik veel waardevolle dingen
+                bereikt in mijn sport</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q55" value="0" type="radio">0 <input
+                name="Q55" value="1" type="radio">1 <input name="Q55"
+                value="2" type="radio">2 <input name="Q55" value="3"
+                checked="checked" type="radio">3 <input name="Q55"
+                value="4" type="radio">4 <input name="Q55" value="5"
+                type="radio">5 <input name="Q55" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>56) ... heb ik me mentaal op het
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>56) ... heb ik me mentaal op het
                 sporten voorbereid</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q56" value="0" type="radio">0 <input name="Q56" value="1" type="radio">1 <input name="Q56" value="2" type="radio">2 <input name="Q56" value="3" checked="checked" type="radio">3 <input name="Q56" value="4" type="radio">4 <input name="Q56" value="5" type="radio">5 <input name="Q56" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q56" value="0" type="radio">0 <input
+                name="Q56" value="1" type="radio">1 <input name="Q56"
+                value="2" type="radio">2 <input name="Q56" value="3"
+                checked="checked" type="radio">3 <input name="Q56"
+                value="4" type="radio">4 <input name="Q56" value="5"
+                type="radio">5 <input name="Q56" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>57) ... voelden mijn spieren
-                stijf of gespannen tijdens het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q57" value="0" type="radio">0 <input name="Q57" value="1" type="radio">1 <input name="Q57" value="2" type="radio">2 <input name="Q57" value="3" checked="checked" type="radio">3 <input name="Q57" value="4" type="radio">4 <input name="Q57" value="5" type="radio">5 <input name="Q57" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>57) ... voelden mijn spieren stijf of
+                gespannen tijdens het sporten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q57" value="0" type="radio">0 <input
+                name="Q57" value="1" type="radio">1 <input name="Q57"
+                value="2" type="radio">2 <input name="Q57" value="3"
+                checked="checked" type="radio">3 <input name="Q57"
+                value="4" type="radio">4 <input name="Q57" value="5"
+                type="radio">5 <input name="Q57" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>58) ... had ik de indruk dat er
-                te weinig pauze waren</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q58" value="0" type="radio">0 <input name="Q58" value="1" type="radio">1 <input name="Q58" value="2" type="radio">2 <input name="Q58" value="3" checked="checked" type="radio">3 <input name="Q58" value="4" type="radio">4 <input name="Q58" value="5" type="radio">5 <input name="Q58" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>58) ... had ik de indruk dat er te
+                weinig pauze waren</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q58" value="0" type="radio">0 <input
+                name="Q58" value="1" type="radio">1 <input name="Q58"
+                value="2" type="radio">2 <input name="Q58" value="3"
+                checked="checked" type="radio">3 <input name="Q58"
+                value="4" type="radio">4 <input name="Q58" value="5"
+                type="radio">5 <input name="Q58" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>59) ... was ik ervan overtuigd
-                dat ik op ieder moment goed zou kunnen presteren</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q59" value="0" type="radio">0 <input name="Q59" value="1" type="radio">1 <input name="Q59" value="2" type="radio">2 <input name="Q59" value="3" checked="checked" type="radio">3 <input name="Q59" value="4" type="radio">4 <input name="Q59" value="5" type="radio">5 <input name="Q59" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>59) ... was ik ervan overtuigd dat ik
+                op ieder moment goed zou kunnen presteren</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q59" value="0" type="radio">0 <input
+                name="Q59" value="1" type="radio">1 <input name="Q59"
+                value="2" type="radio">2 <input name="Q59" value="3"
+                checked="checked" type="radio">3 <input name="Q59"
+                value="4" type="radio">4 <input name="Q59" value="5"
+                type="radio">5 <input name="Q59" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>60) ... kon ik goed omgaan met
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>60) ... kon ik goed omgaan met
                 problemen van andere teamleden</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q60" value="0" type="radio">0 <input name="Q60" value="1" type="radio">1 <input name="Q60" value="2" type="radio">2 <input name="Q60" value="3" checked="checked" type="radio">3 <input name="Q60" value="4" type="radio">4 <input name="Q60" value="5" type="radio">5 <input name="Q60" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q60" value="0" type="radio">0 <input
+                name="Q60" value="1" type="radio">1 <input name="Q60"
+                value="2" type="radio">2 <input name="Q60" value="3"
+                checked="checked" type="radio">3 <input name="Q60"
+                value="4" type="radio">4 <input name="Q60" value="5"
+                type="radio">5 <input name="Q60" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>61) ... had ik een goede
-                lichamelijke gesteldheid</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q61" value="0" type="radio">0 <input name="Q61" value="1" type="radio">1 <input name="Q61" value="2" type="radio">2 <input name="Q61" value="3" checked="checked" type="radio">3 <input name="Q61" value="4" type="radio">4 <input name="Q61" value="5" type="radio">5 <input name="Q61" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>61) ... had ik een goede lichamelijke
+                gesteldheid</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q61" value="0" type="radio">0 <input
+                name="Q61" value="1" type="radio">1 <input name="Q61"
+                value="2" type="radio">2 <input name="Q61" value="3"
+                checked="checked" type="radio">3 <input name="Q61"
+                value="4" type="radio">4 <input name="Q61" value="5"
+                type="radio">5 <input name="Q61" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>62) ... ben ik diep gegaan
-                tijdens het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q62" value="0" type="radio">0 <input name="Q62" value="1" type="radio">1 <input name="Q62" value="2" type="radio">2 <input name="Q62" value="3" checked="checked" type="radio">3 <input name="Q62" value="4" type="radio">4 <input name="Q62" value="5" type="radio">5 <input name="Q62" value="6" type="radio">5
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>63) ... voelde ik me emotioneel
-                uitgeput van het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q63" value="0" type="radio">0 <input name="Q63" value="1" type="radio">1 <input name="Q63" value="2" type="radio">2 <input name="Q63" value="3" checked="checked" type="radio">3 <input name="Q63" value="4" type="radio">4 <input name="Q63" value="5" type="radio">5 <input name="Q63" value="6" type="radio">6
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>64) ... had ik spierpijn na het
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>62) ... ben ik diep gegaan tijdens het
                 sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q64" value="0" type="radio">0 <input name="Q64" value="1" type="radio">1 <input name="Q64" value="2" type="radio">2 <input name="Q64" value="3" checked="checked" type="radio">3 <input name="Q64" value="4" type="radio">4 <input name="Q64" value="5" type="radio">5 <input name="Q64" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q62" value="0" type="radio">0 <input
+                name="Q62" value="1" type="radio">1 <input name="Q62"
+                value="2" type="radio">2 <input name="Q62" value="3"
+                checked="checked" type="radio">3 <input name="Q62"
+                value="4" type="radio">4 <input name="Q62" value="5"
+                type="radio">5 <input name="Q62" value="6" type="radio">5
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>65) ... was ik ervan overtuigd
-                dat ik goed gepresteerd had tijdens het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q65" value="0" type="radio">0 <input name="Q65" value="1" type="radio">1 <input name="Q65" value="2" type="radio">2 <input name="Q65" value="3" checked="checked" type="radio">3 <input name="Q65" value="4" type="radio">4 <input name="Q65" value="5" type="radio">5 <input name="Q65" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>63) ... voelde ik me emotioneel
+                uitgeput van het sporten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q63" value="0" type="radio">0 <input
+                name="Q63" value="1" type="radio">1 <input name="Q63"
+                value="2" type="radio">2 <input name="Q63" value="3"
+                checked="checked" type="radio">3 <input name="Q63"
+                value="4" type="radio">4 <input name="Q63" value="5"
+                type="radio">5 <input name="Q63" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>66) ... werd er te veel van me
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>64) ... had ik spierpijn na het
+                sporten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q64" value="0" type="radio">0 <input
+                name="Q64" value="1" type="radio">1 <input name="Q64"
+                value="2" type="radio">2 <input name="Q64" value="3"
+                checked="checked" type="radio">3 <input name="Q64"
+                value="4" type="radio">4 <input name="Q64" value="5"
+                type="radio">5 <input name="Q64" value="6" type="radio">6
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>65) ... was ik ervan overtuigd dat ik
+                goed gepresteerd had tijdens het sporten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q65" value="0" type="radio">0 <input
+                name="Q65" value="1" type="radio">1 <input name="Q65"
+                value="2" type="radio">2 <input name="Q65" value="3"
+                checked="checked" type="radio">3 <input name="Q65"
+                value="4" type="radio">4 <input name="Q65" value="5"
+                type="radio">5 <input name="Q65" value="6" type="radio">6
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>66) ... werd er te veel van me
                 gevraagd tijdens de pauzes</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q66" value="0" type="radio">0 <input name="Q66" value="1" type="radio">1 <input name="Q66" value="2" type="radio">2 <input name="Q66" value="3" checked="checked" type="radio">3 <input name="Q66" value="4" type="radio">4 <input name="Q66" value="5" type="radio">5 <input name="Q66" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q66" value="0" type="radio">0 <input
+                name="Q66" value="1" type="radio">1 <input name="Q66"
+                value="2" type="radio">2 <input name="Q66" value="3"
+                checked="checked" type="radio">3 <input name="Q66"
+                value="4" type="radio">4 <input name="Q66" value="5"
+                type="radio">5 <input name="Q66" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>67) ... heb ik mezelf opgepept
-                voor het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q67" value="0" type="radio">0 <input name="Q67" value="1" type="radio">1 <input name="Q67" value="2" type="radio">2 <input name="Q67" value="3" checked="checked" type="radio">3 <input name="Q67" value="4" type="radio">4 <input name="Q67" value="5" type="radio">5 <input name="Q67" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>67) ... heb ik mezelf opgepept voor
+                het sporten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q67" value="0" type="radio">0 <input
+                name="Q67" value="1" type="radio">1 <input name="Q67"
+                value="2" type="radio">2 <input name="Q67" value="3"
+                checked="checked" type="radio">3 <input name="Q67"
+                value="4" type="radio">4 <input name="Q67" value="5"
+                type="radio">5 <input name="Q67" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>68) ... had ik het gevoel dat ik
-                met mijn sport wilde stoppen</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q68" value="0" type="radio">0 <input name="Q68" value="1" type="radio">1 <input name="Q68" value="2" type="radio">2 <input name="Q68" value="3" checked="checked" type="radio">3 <input name="Q68" value="4" type="radio">4 <input name="Q68" value="5" type="radio">5 <input name="Q68" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>68) ... had ik het gevoel dat ik met
+                mijn sport wilde stoppen</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q68" value="0" type="radio">0 <input
+                name="Q68" value="1" type="radio">1 <input name="Q68"
+                value="2" type="radio">2 <input name="Q68" value="3"
+                checked="checked" type="radio">3 <input name="Q68"
+                value="4" type="radio">4 <input name="Q68" value="5"
+                type="radio">5 <input name="Q68" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>69) ... zat ik vol energie</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q69" value="0" type="radio">0 <input name="Q69" value="1" type="radio">1 <input name="Q69" value="2" type="radio">2 <input name="Q69" value="3" checked="checked" type="radio">3 <input name="Q69" value="4" type="radio">4 <input name="Q69" value="5" type="radio">5 <input name="Q69" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>69) ... zat ik vol energie</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q69" value="0" type="radio">0 <input
+                name="Q69" value="1" type="radio">1 <input name="Q69"
+                value="2" type="radio">2 <input name="Q69" value="3"
+                checked="checked" type="radio">3 <input name="Q69"
+                value="4" type="radio">4 <input name="Q69" value="5"
+                type="radio">5 <input name="Q69" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>70) ... kon ik goed begrijpen
-                hoe andere teamleden over dingen dachten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q70" value="0" type="radio">0 <input name="Q70" value="1" type="radio">1 <input name="Q70" value="2" type="radio">2 <input name="Q70" value="3" checked="checked" type="radio">3 <input name="Q70" value="4" type="radio">4 <input name="Q70" value="5" type="radio">5 <input name="Q70" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>70) ... kon ik goed begrijpen hoe
+                andere teamleden over dingen dachten</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q70" value="0" type="radio">0 <input
+                name="Q70" value="1" type="radio">1 <input name="Q70"
+                value="2" type="radio">2 <input name="Q70" value="3"
+                checked="checked" type="radio">3 <input name="Q70"
+                value="4" type="radio">4 <input name="Q70" value="5"
+                type="radio">5 <input name="Q70" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>71) ... was ik ervan overtuigd
-                dat ik goed getraind had</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q71" value="0" type="radio">0 <input name="Q71" value="1" type="radio">1 <input name="Q71" value="2" type="radio">2 <input name="Q71" value="3" checked="checked" type="radio">3 <input name="Q71" value="4" type="radio">4 <input name="Q71" value="5" type="radio">5 <input name="Q71" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>71) ... was ik ervan overtuigd dat ik
+                goed getraind had</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q71" value="0" type="radio">0 <input
+                name="Q71" value="1" type="radio">1 <input name="Q71"
+                value="2" type="radio">2 <input name="Q71" value="3"
+                checked="checked" type="radio">3 <input name="Q71"
+                value="4" type="radio">4 <input name="Q71" value="5"
+                type="radio">5 <input name="Q71" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>72) ... waren de pauzes niet op
-                het goede moment</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q72" value="0" type="radio">0 <input name="Q72" value="1" type="radio">1 <input name="Q72" value="2" type="radio">2 <input name="Q72" value="3" checked="checked" type="radio">3 <input name="Q72" value="4" type="radio">4 <input name="Q72" value="5" type="radio">5 <input name="Q72" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>72) ... waren de pauzes niet op het
+                goede moment</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q72" value="0" type="radio">0 <input
+                name="Q72" value="1" type="radio">1 <input name="Q72"
+                value="2" type="radio">2 <input name="Q72" value="3"
+                checked="checked" type="radio">3 <input name="Q72"
+                value="4" type="radio">4 <input name="Q72" value="5"
+                type="radio">5 <input name="Q72" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>73) ... voelde ik me kwetsbaar
-                voor blessures</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q73" value="0" type="radio">0 <input name="Q73" value="1" type="radio">1 <input name="Q73" value="2" type="radio">2 <input name="Q73" value="3" checked="checked" type="radio">3 <input name="Q73" value="4" type="radio">4 <input name="Q73" value="5" type="radio">5 <input name="Q73" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>73) ... voelde ik me kwetsbaar voor
+                blessures</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q73" value="0" type="radio">0 <input
+                name="Q73" value="1" type="radio">1 <input name="Q73"
+                value="2" type="radio">2 <input name="Q73" value="3"
+                checked="checked" type="radio">3 <input name="Q73"
+                value="4" type="radio">4 <input name="Q73" value="5"
+                type="radio">5 <input name="Q73" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>74) ... heb ik mezelf duidelijke
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>74) ... heb ik mezelf duidelijke
                 doelen gesteld tijdens het sporten</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q74" value="0" type="radio">0 <input name="Q74" value="1" type="radio">1 <input name="Q74" value="2" type="radio">2 <input name="Q74" value="3" checked="checked" type="radio">3 <input name="Q74" value="4" type="radio">4 <input name="Q74" value="5" type="radio">5 <input name="Q74" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q74" value="0" type="radio">0 <input
+                name="Q74" value="1" type="radio">1 <input name="Q74"
+                value="2" type="radio">2 <input name="Q74" value="3"
+                checked="checked" type="radio">3 <input name="Q74"
+                value="4" type="radio">4 <input name="Q74" value="5"
+                type="radio">5 <input name="Q74" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>75) ... voelde mijn lichaam
-                sterk</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q75" value="0" type="radio">0 <input name="Q75" value="1" type="radio">1 <input name="Q75" value="2" type="radio">2 <input name="Q75" value="3" checked="checked" type="radio">3 <input name="Q75" value="4" type="radio">4 <input name="Q75" value="5" type="radio">5 <input name="Q75" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>75) ... voelde mijn lichaam sterk</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q75" value="0" type="radio">0 <input
+                name="Q75" value="1" type="radio">1 <input name="Q75"
+                value="2" type="radio">2 <input name="Q75" value="3"
+                checked="checked" type="radio">3 <input name="Q75"
+                value="4" type="radio">4 <input name="Q75" value="5"
+                type="radio">5 <input name="Q75" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>76) ... voelde ik me
-                gefrustreerd door mijn sport</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q76" value="0" type="radio">0 <input name="Q76" value="1" type="radio">1 <input name="Q76" value="2" type="radio">2 <input name="Q76" value="3" checked="checked" type="radio">3 <input name="Q76" value="4" type="radio">4 <input name="Q76" value="5" type="radio">5 <input name="Q76" value="6" type="radio">6
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>76) ... voelde ik me gefrustreerd door
+                mijn sport</big></big></td>
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q76" value="0" type="radio">0 <input
+                name="Q76" value="1" type="radio">1 <input name="Q76"
+                value="2" type="radio">2 <input name="Q76" value="3"
+                checked="checked" type="radio">3 <input name="Q76"
+                value="4" type="radio">4 <input name="Q76" value="5"
+                type="radio">5 <input name="Q76" value="6" type="radio">6
             </form>
           </td>
         </tr>
         <tr>
-          <td align="left" bgcolor="#c0c0c0" height="20" valign="middle" width="30%"><big><big>77) ... kon ik heel kalm met
+          <td valign="middle" width="30%" align="left" bgcolor="#c0c0c0"
+            height="20"><big><big>77) ... kon ik heel kalm met
                 emotionele problemen in mijn sport omgaan</big></big></td>
-          <td bgcolor="#c0c0c0" valign="middle"><br>
-            <form> <input name="Q77" value="0" type="radio">0 <input name="Q77" value="1" type="radio">1 <input name="Q77" value="2" type="radio">2 <input name="Q77" value="3" checked="checked" type="radio">3 <input name="Q77" value="4" type="radio">4 <input name="Q77" value="5" type="radio">5 <input name="Q77" value="6" type="radio">6
+          <td valign="middle" bgcolor="#c0c0c0"><br>
+            <form> <input name="Q77" value="0" type="radio">0 <input
+                name="Q77" value="1" type="radio">1 <input name="Q77"
+                value="2" type="radio">2 <input name="Q77" value="3"
+                checked="checked" type="radio">3 <input name="Q77"
+                value="4" type="radio">4 <input name="Q77" value="5"
+                type="radio">5 <input name="Q77" value="6" type="radio">6
             </form>
           </td>
         </tr>
       </tbody>
     </table>
-    
-    
     <br>
-    <a class="button " onclick="confirmSurvey()" id="confirmSurveyButtonId"><span>Save/Send data</span></a>
-    <br>
-<h1><a name="instructions"></a>Instructions</h1>
-
-    
-    
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Deze
-      vragenlijst bestaat uit een serie stellingen. Deze stellingen
-      geven
-      mogelijke weergaves van je mentaal, emotioneel en lichamelijk
-      welzijn
-      of van je activiteiten tijdens de laatste week. Selecteer het
-      antwoord dat het best past bij je gedachten en activiteiten. Geef
-      aan
-      hoe vaak een stelling waar was voor jou in de laatste paar dagen.
-      De
-      stellingen die verwijzen naar het sporten gaan zowel over
-      wedstrijden
-      als over trainingen.</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Voor
-      elke stelling zijn er zeven mogelijke antwoorden. Beantwoord de
-      vraag
-      door het nummer van het best passende antwoord in te vullen.</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Voorbeeld:</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-&nbsp;
+    <a class="button " onclick="confirmSurvey()"
+      id="confirmSurveyButtonId"><span>Save/Send data</span></a> <br>
+    <h1><a name="instructions"></a>Instructions</h1>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Deze vragenlijst bestaat uit een serie
+      stellingen. Deze stellingen geven mogelijke weergaves van je
+      mentaal, emotioneel en lichamelijk welzijn of van je activiteiten
+      tijdens de laatste week. Selecteer het antwoord dat het best past
+      bij je gedachten en activiteiten. Geef aan hoe vaak een stelling
+      waar was voor jou in de laatste paar dagen. De stellingen die
+      verwijzen naar het sporten gaan zowel over wedstrijden als over
+      trainingen.</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Voor elke stelling zijn er zeven
+      mogelijke antwoorden. Beantwoord de vraag door het nummer van het
+      best passende antwoord in te vullen.</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Voorbeeld:</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;">
+      0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;
+      &nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;
+      &nbsp;
 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;
+      &nbsp;
 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-6</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      nooit&nbsp;&nbsp;
-      zelden&nbsp;&nbsp; soms&nbsp;&nbsp; regelmatig&nbsp;&nbsp;
-      vaak&nbsp;&nbsp;&nbsp;
+      6</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> nooit&nbsp;&nbsp; zelden&nbsp;&nbsp;
+      soms&nbsp;&nbsp; regelmatig&nbsp;&nbsp; vaak&nbsp;&nbsp;&nbsp;
       heel vaak&nbsp;&nbsp;&nbsp; altijd</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Tijdens
-      de afgelopen 3&nbsp;weken</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      ...
-      heb ik de krant gelezen 5</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      In
-      dit voorbeeld is nummer 5 ingevuld. Dit betekent, dat je heel vaak
-      de
-      krant hebt gelezen tijdens de afgelopen week.</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Laat
-      geen vragen open.</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Als
-      je niet goed weet welk antwoord je moet kiezen, vul dan het
-      antwoord
-      in dat het meest op jou van toepassing is.</p>
-<div style="text-align: left;">
-    </div>
-<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; text-align: left;">
-      Beantwoord
-      de vragen zonder onderbreking.</p>
-<table border="0" cellpadding="2" cellspacing="2" width="100%">
-<tbody><tr><td valign="top">
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Tijdens de afgelopen 3&nbsp;weken</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> ... heb ik de krant gelezen 5</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> In dit voorbeeld is nummer 5 ingevuld.
+      Dit betekent, dat je heel vaak de krant hebt gelezen tijdens de
+      afgelopen week.</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Laat geen vragen open.</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Als je niet goed weet welk antwoord je
+      moet kiezen, vul dan het antwoord in dat het meest op jou van
+      toepassing is.</p>
+    <div style="text-align: left;"> </div>
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height:
+      100%; text-align: left;"> Beantwoord de vragen zonder
+      onderbreking.</p>
+    <table width="100%" cellpadding="2" cellspacing="2" border="0">
+      <tbody>
+        <tr>
+          <td valign="top">
             <h1><a href="newEntrySurvey.html#top">Back to top<br>
-</a></h1>
-          </td></tr></tbody>
-</table>
-
-    
-    
-    
+              </a></h1>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <span id="lbSurvey"></span>
-  
-</body></html>
+  </body>
+</html>

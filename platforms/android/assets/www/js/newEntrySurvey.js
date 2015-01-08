@@ -21,14 +21,16 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadSurvey() {
+    window.location = 'newEntry.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
 function onSurveyLoad(){
 
     document.addEventListener("deviceready", this.onDeviceReady, false);
-
-    document.getElementById("confirmSurveyButton").disabled = true;
 
     console.log('creating table Survey');
 
@@ -57,9 +59,16 @@ function onDeviceReady() {
     } 
     else {
         console.log('webkit request file system else');
-        //window.requestFileSystem(window.PERSISTENT, 1024*1024, onFSWin, onFSFail);
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSWin, onFSFail); 
     }
+
+    //Need to get user name for csv file creation
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM User;', [],
+                function(transaction, result) {
+                    setUserName(result);
+                },errorHandler);
+    },errorHandler,nullHandler);
 
 }
 
@@ -74,7 +83,6 @@ function onFSWin (fileSystem) {
 
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
-    //fileEntry.createWriter(gotFileWriter, onFSFail);
     userFileObject = fileEntry;
 
 }
@@ -90,8 +98,6 @@ function checkSurveyValues() {
 
         $('#lbSurvey').append('<br>' + 'Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a>');
         $('#lbUsers').append('<br>' + 'Click confirm to proceed');
-        document.getElementById("addSurveyButton").disabled = true;
-        document.getElementById("confirmSurveyButton").disabled = false;
 
         return true;
 }
@@ -107,17 +113,11 @@ function addSurveyToDB() {
         });
 
 
-        //Need to get user name for csv file creation
-        db.transaction(function(transaction) {
-            transaction.executeSql('SELECT * FROM User;', [],
-                    function(transaction, result) {
-                        if (result != null && result.rows != null) {
-                            setUserName(result);
-                        }
-                    },errorHandler);
-        },errorHandler,nullHandler);
-    }
 
+
+
+
+    }
 }
 
 function countRows(test, callBack){
@@ -143,11 +143,8 @@ function setUserName(result){
 }
 
 function confirmSurvey(){
-    //countRows('User',console.log);
-
+    addSurveyToDB(); 
     uploadCsvSurvey();
-    alert("Data has been sent.");
-    //window.location = 'newEntry.html';
 }
 
 function uploadCsvSurvey(){
@@ -164,11 +161,12 @@ function uploadCsvSurvey(){
                             var row = result.rows.item(i);
                             csvData += row.inputDate + ',' + row.inputTime + ',' + row.Q1 + ',' + row.Q2 + ',' + row.Q3 + ',' + row.Q4 + ',' + row.Q5 + ',' + row.Q6 + ',' + row.Q7 + ',' + row.Q8 + ',' + row.Q9 + ',' + row.Q10 + ',' + row.Q11 + ',' + row.Q12 + ',' + row.Q13 + ',' + row.Q14 + ',' + row.Q15 + ',' + row.Q16 + ',' + row.Q17 + ',' + row.Q18 + ',' + row.Q19 + ',' + row.Q20 + ',' + row.Q21 + ',' + row.Q22 + ',' + row.Q23 + ',' + row.Q24 + ',' + row.Q25 + ',' + row.Q26 + ',' + row.Q27 + ',' + row.Q28 + ',' + row.Q29 + ',' + row.Q30 + ',' + row.Q31 + ',' + row.Q32 + ',' + row.Q33 + ',' + row.Q34 + ',' + row.Q35 + ',' + row.Q36 + ',' + row.Q37 + ',' + row.Q38 + ',' + row.Q39 + ',' + row.Q40 + ',' + row.Q41 + ',' + row.Q42 + ',' + row.Q43 + ',' + row.Q44 + ',' + row.Q45 + ',' + row.Q46 + ',' + row.Q47 + ',' + row.Q48 + ',' + row.Q49 + ',' + row.Q50 + ',' + row.Q51 + ',' + row.Q52 + ',' + row.Q53 + ',' + row.Q54 + ',' + row.Q55 + ',' + row.Q56 + ',' + row.Q57 + ',' + row.Q58 + ',' + row.Q59 + ',' + row.Q60 + ',' + row.Q61 + ',' + row.Q62 + ',' + row.Q63 + ',' + row.Q64 + ',' + row.Q65 + ',' + row.Q66 + ',' + row.Q67 + ',' + row.Q68 + ',' + row.Q69 + ',' + row.Q70 + ',' + row.Q71 + ',' + row.Q72 + ',' + row.Q73 + ',' + row.Q74 + ',' + row.Q75 + ',' + row.Q76 + ',' + row.Q77 + "\n";
                         }
-                        fileWrite();
+                    fileWrite();
                     }
 
                 },errorHandler);
     },errorHandler,nullHandler);
+
 
 }
 
@@ -206,22 +204,33 @@ function getTimeStr(){
 function gotFileWriter(writer) {
 
     console.log('gotFileWriter');
-    //csvData = "FirstName" + "," + "LastName" + "," + "DOBday" + "," + "DOBmonth" + "," + "DOByear" + "\n";
     console.log('writing:');
     console.log(csvData);
+
     // Create a new Blob and write it 
     var blob = new Blob([csvData], {type: 'text/plain'});
 
     writer.write(blob)
 
-    options  = JSON.parse(localStorage.getItem("myOptions"));
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=userFileObject.toURL();
+    options.mimeType="text/csv";
+    options.headers = {
+        Connection: "close"
+    }
+    options.chunkedMode = false;
+
+    var params = new Object();
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'RestQ.csv';
+    options.params = params;
+
     console.log(options);
-    options.params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'SurveyData.csv';
 
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadSurvey, errorHandler, options);
 
 }
 

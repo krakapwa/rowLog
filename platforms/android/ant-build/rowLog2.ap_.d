@@ -40,6 +40,7 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/cordova.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/css \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/cordova_plugins.js \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/mystyle.css \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/newEntryHR.html \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/img \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/test.php \
@@ -145,6 +146,7 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/gist2.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/JSON.prune-master \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/newEntryWUP.js \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/newEntrySurvey.js.bkp \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/newEntry.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/index.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/js/jsonStringify.js \

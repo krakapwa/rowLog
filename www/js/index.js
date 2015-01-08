@@ -124,7 +124,16 @@ function countRows(test, callBack){
 }
 
 function confirmUser(){
-    //countRows('User',console.log);
+
+    addUserToDB();
+
+    $("#txPassword").prop('disabled', true);
+    $("#txFirstName").prop('disabled', true);
+    $("#txLastName").prop('disabled', true);
+    $("#txDOBday").prop('disabled', true);
+    $("#txDOBmonth").prop('disabled', true);
+    $("#txDOByear").prop('disabled', true);
+
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
     uploadCsvUser();
@@ -143,7 +152,6 @@ function uploadCsvUser(){
 
     fileWrite(); 
     console.log(userFileObject);
-    //uploadFile(userFileObject);
 }
 
 function uploadFile(userFileObject){
@@ -167,24 +175,25 @@ function uploadFile(userFileObject){
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
+                        options.headers = {
+                            Connection: "close"
+                        }
+                        options.chunkedMode = false;
 
                         var params = new Object();
-
-                        params.newFileName = firstName + lastName + getDateStr() + 'userData.csv';
+                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
                         options.params = params;
 
-                        localStorage.setItem("myOptions",JSON.stringify(options));
-                        myOptions  = JSON.parse(localStorage.getItem("myOptions"));
-                        console.log(myOptions);
+                        console.log(options);
 
                         var ft = new FileTransfer();
                         console.log('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.newFileName);
+                        console.log('With newFileName: ' + options.params.newFileName);
                         ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options);
                     }
 
                 },errorHandler);
-    },errorHandler,nullHandler);
+                },errorHandler,nullHandler);
 }
 
 function getDateStr(){
@@ -218,7 +227,6 @@ function onFSWin (fileSystem) {
 
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
-    //fileEntry.createWriter(gotFileWriter, onFSFail);
     userFileObject = fileEntry;
 
 }

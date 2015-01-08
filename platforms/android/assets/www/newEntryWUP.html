@@ -1,20 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-
-
-  
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <meta name="viewport" content="width=default-width,
       user-scalable=no">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0, user-scalable=no, minimum-scale=1.0,
-      maximum-scale=1.0"><title>Embedded Sql Example</title>
-    
+      maximum-scale=1.0">
+    <title>Embedded Sql Example</title>
     <script type="text/javascript" src="cordova.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/newEntryWUP.js"></script></head><body onload="onWUPLoad()">
-    <table border="0" cellpadding="2" cellspacing="2" width="100%">
+    <script src="js/newEntryWUP.js"></script>
+  </head>
+  <body onload="onWUPLoad()">
+    <table width="100%" cellpadding="2" cellspacing="2" border="0">
       <tbody>
         <tr>
           <td valign="top" width="50%">
@@ -23,34 +24,46 @@
           </td>
           <td valign="top">
             <h1><a href="instructions.html"><br>
-</a></h1>
+              </a></h1>
           </td>
         </tr>
       </tbody>
     </table>
     <hr size="2" width="100%">
     <h1>Warming Up Protocol<br>
-</h1>
+    </h1>
     <br>
-    <table border="0" cellpadding="2" cellspacing="2" width="100%">
+    <br>
+    <table width="100%" cellpadding="2" cellspacing="2" border="0">
       <tbody>
         <tr>
-          <td valign="top" width="50%">Power Last Minute:</td>
-          <td valign="top">&nbsp; <input id="txPLM" placeholder="PLM" value="100" type="number"> </td>
+          <td valign="top" width="50%">Rate of perceived exertion*:</td>
+          <td valign="top">&nbsp; <input id="txRPE" placeholder="RPE"
+              value="5" type="number"> </td>
+        </tr>
+        <tr>
+          <td valign="top" width="50%">Heart Rate at end of WUP:</td>
+          <td valign="top">&nbsp; <input id="txHRRWUP"
+              placeholder="HRRWUP" value="100" type="number"> </td>
         </tr>
         <tr>
           <td valign="top">Heart Rate 1 minute post WUP:</td>
-          <td valign="top">&nbsp;<input id="txHRR60" placeholder="HRR60" value="5" type="number"> </td>
+          <td valign="top">&nbsp;<input id="txHRR60" placeholder="HRR60"
+              value="5" type="number"> </td>
         </tr>
         <tr>
-          <td valign="top"><input id="addWUPButton" value="Save" onclick="addWUPToDB()" type="button"> <input id="confirmWUPButton" value="Send data" onclick="confirmWUP()" type="button"> </td>
-          <td valign="top"><br>
-          </td>
         </tr>
       </tbody>
     </table>
-    <br>
-    <span id="lbWUP"></span>
-  
+    <a class="button " onclick="confirmWUP()" id="confirmWUPButtonId"><span>Save/Send
 
-</body></html>
+
+        data</span></a><br>
+    <br>
+    (*) RPE is a number from 0 to 10. Please refer to the table below:<br>
+    <br>
+    <img style="width: 170px; height: 313px;" alt="RPE table"
+      src="img/RPE.jpg" width="170" height="313"><br>
+    <span id="lbWUP"></span>
+  </body>
+</html>

@@ -20,6 +20,10 @@ function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
+function successUploadHR() {
+    window.location = 'newEntry.html';
+}
+
 function nullHandler(){};
 
 // called when the application loads
@@ -27,7 +31,6 @@ function onDailyLoad(){
 
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
-    document.getElementById("confirmDailyButton").disabled = false;
     //db = openDatabase(shortName, version, displayName,maxSize);
 
     console.log('creating table Daily');
@@ -83,6 +86,16 @@ function onDeviceReady() {
         //window.requestFileSystem(window.PERSISTENT, 1024*1024, onFSWin, onFSFail);
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSWin, onFSFail); 
     }
+
+    //Need to get user name for csv file creation
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM User;', [],
+                function(transaction, result) {
+                    if (result != null && result.rows != null) {
+                        setUserName(result);
+                    }
+                },errorHandler);
+    },errorHandler,nullHandler);
 }
 
 function onFSWin (fileSystem) {
@@ -96,7 +109,6 @@ function onFSWin (fileSystem) {
 
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
-    //fileEntry.createWriter(gotFileWriter, onFSFail);
     userFileObject = fileEntry;
 
 }
@@ -135,15 +147,6 @@ function addDailyToDB() {
 
         //alert("Your data has been saved.");
 
-        //Need to get user name for csv file creation
-        db.transaction(function(transaction) {
-            transaction.executeSql('SELECT * FROM User;', [],
-                    function(transaction, result) {
-                        if (result != null && result.rows != null) {
-                            setUserName(result);
-                        }
-                    },errorHandler);
-        },errorHandler,nullHandler);
     //}
 }
 
@@ -175,8 +178,8 @@ function confirmDaily(){
 
     if(checkDailyValues()==1){
         uploadCsvDaily();
-        alert("Data has been sent.");
-        window.location = 'newEntry.html';
+        //alert("Data has been sent.");
+        //window.location = 'newEntry.html';
     }
     if(checkDailyValues()==2){
         alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
@@ -200,10 +203,8 @@ function uploadCsvDaily(){
                             var row = result.rows.item(i);
                             csvData += row.inputDate + ',' + row.inputTime + ',' + row.HeartRate + ',' + row.RPE + ',' + row.Weight + ',' + row.Injury + '\n';
                         }
-
                         fileWrite();
                     }
-
                 },errorHandler);
     },errorHandler,nullHandler);
 
@@ -253,14 +254,25 @@ function gotFileWriter(writer) {
 
     writer.write(blob)
 
-    options  = JSON.parse(localStorage.getItem("myOptions"));
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=userFileObject.toURL();
+    options.mimeType="text/csv";
+    options.headers = {
+        Connection: "close"
+    }
+    options.chunkedMode = false;
+
+    var params = new Object();
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'dailyData.csv';
+    options.params = params;
+
     console.log(options);
-    options.params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'dailyData.csv';
 
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successCallBack, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options);
 
 }
 

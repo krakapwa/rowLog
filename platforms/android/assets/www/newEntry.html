@@ -1,50 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-
-
-
-  
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <meta name="viewport" content="width=default-width,
       user-scalable=no">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0, user-scalable=no, minimum-scale=1.0,
-      maximum-scale=1.0"><title>Embedded Sql Example</title>
-    
-        <script type="text/javascript" src="cordova.js"></script>
+      maximum-scale=1.0">
+    <title>Embedded Sql Example</title>
+    <script type="text/javascript" src="cordova.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/newEntry.js"></script></head><body onload="onNewEntryLoad()">
-    <h1 style="text-align: center;">What do you want do ?</h1>
+    <script src="js/newEntry.js"></script>
+  </head>
+  <body onload="onNewEntryLoad()">
+    <h1 style="text-align: center;">Main Menu<br>
+    </h1>
     <hr size="2" width="100%"><br>
-    <table style="width: 100%;" border="0" cellpadding="2" cellspacing="2">
+    <table style="width: 100%;" cellpadding="2" cellspacing="2"
+      border="0">
       <tbody>
         <tr align="center">
           <td style="background-color: rgb(204, 204, 204);">
-            <h1><a href="newEntryHR.html">Add
-
-                daily heart rate and Rate of Perceived Exertion</a></h1>
+            <h1><a href="newEntryHR.html">Add daily heart rate and Rate
+                of Perceived Exertion</a></h1>
           </td>
-          
-        </tr><tr align="center">
-      <td style="background-color: rgb(204, 204, 204);">
-      <h1><a href="newEntrySurvey.html">Add
-
-                survey</a></h1>
-      </td>
-    </tr>
-    <tr align="center">
-      <td style="background-color: rgb(204, 204, 204);">
-      <h1><a href="newEntryWUP.html">Add Warming Up Protocol<br>
-</a></h1>
-
-      </td>
-    </tr>
-    <tr><td valign="top"><input id="resetButton" value="Reset" onclick="dropTables()" type="button"> </td>
-
-      </tr></tbody>
+        </tr>
+        <tr align="center">
+          <td style="background-color: rgb(204, 204, 204);">
+            <h1><a href="newEntrySurvey.html">Add REST-Q</a></h1>
+          </td>
+        </tr>
+        <tr align="center">
+          <td style="background-color: rgb(204, 204, 204);">
+            <h1><a href="newEntryWUP.html">Add Warming Up Protocol<br>
+              </a></h1>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><input id="resetButton" value="Reset"
+              onclick="dropTables()" type="button"> </td>
+        </tr>
+        <tr align="center">
+          <td valign="top"><a class="button " onclick="exitFromApp()"
+              id="leaveAppButtonId"><span>Leave Application<br>
+              </span></a></td>
+        </tr>
+      </tbody>
     </table>
-  
-
-
-</body></html>
+  </body>
+</html>
