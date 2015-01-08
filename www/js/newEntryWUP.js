@@ -260,7 +260,7 @@ function gotFileWriter(writer) {
     options.chunkedMode = false;
 
     var params = new Object();
-    params.newFileName = firstName + lastName + getDateStr() +'_'+ getTimeStr() + 'WUP.csv';
+    params.newFileName = firstName + lastName + getDateStr() +'_'+ 'WUP.csv';
     options.params = params;
 
     console.log(options);
