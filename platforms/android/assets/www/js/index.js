@@ -62,7 +62,6 @@ function createEvents(){
 // list the values in the database to the screen using jquery to update the #lbUsers element
 function checkUserValues() {
 
-    $('#lbUsers').html('');
 
     if( ($('#txDOBday').val().length == 2) && isNumber($('#txDOBday').val()) && ($('#txDOBmonth').val().length == 2)  &&
             isNumber($('#txDOBmonth').val()) && isNumber($('#txDOByear').val()) && ($('#txDOByear').val().length == 4) && ($('#txFirstName').val().length > 0) && ($('#txLastName').val().length > 0) ){
@@ -72,12 +71,21 @@ function checkUserValues() {
 
         if(($('#txPassword').val() == "roeienopdebosbaan")){
 
-            $('#lbUsers').append('Please double check your answers. If something is wrong, click ' + '<a href="index.html">Reset</a><br>');
+            $('#lbUsers').html('');
             $("#addUserButtonId").hide();
             $("#confirmUserButtonId").show();
+            $("#txPassword").prop('disabled', true);
+            $("#txFirstName").prop('disabled', true);
+            $("#txLastName").prop('disabled', true);
+            $("#txDOBday").prop('disabled', true);
+            $("#txDOBmonth").prop('disabled', true);
+            $("#txDOByear").prop('disabled', true);
+            $('#lbUsers').append('Please double check your answers. If something is wrong, click  Reset. Click "Proceed to forms" to continue.<br><br>');
         }
+
         else{
 
+            $('#lbUsers').html('');
             $('#lbUsers').append('<br>' + 'Password is wrong, check again.');
         }
 
@@ -86,6 +94,7 @@ function checkUserValues() {
 
     } else{
 
+        $('#lbUsers').html('');
         $('#lbUsers').append('<br>' + 'Date of birth must of have 2 digits for day, 2 digits for month and 4 digits for year. First name and last name must be non-empty');
             $("#addUserButtonId").show();
 
@@ -127,12 +136,6 @@ function confirmUser(){
 
     addUserToDB();
 
-    $("#txPassword").prop('disabled', true);
-    $("#txFirstName").prop('disabled', true);
-    $("#txLastName").prop('disabled', true);
-    $("#txDOBday").prop('disabled', true);
-    $("#txDOBmonth").prop('disabled', true);
-    $("#txDOByear").prop('disabled', true);
 
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
@@ -175,10 +178,10 @@ function uploadFile(userFileObject){
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
-                        options.headers = {
-                            Connection: "close"
-                        }
-                        options.chunkedMode = false;
+                        //options.headers = {
+                        //    Connection: "close"
+                        //}
+                        //options.chunkedMode = false;
 
                         var params = new Object();
                         params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
@@ -189,7 +192,7 @@ function uploadFile(userFileObject){
                         var ft = new FileTransfer();
                         console.log('Uploading: ' + userFileObject.toURL());
                         console.log('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options);
+                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
                     }
 
                 },errorHandler);
@@ -324,8 +327,32 @@ function onDeviceReady() {
                     }
                 },errorHandler);
     },errorHandler,nullHandler);
+
+
 }
 
+function resetClick() {
+
+        console.log('RESETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt');
+        dropTables();
+}
 function fileWrite() {
     userFileObject.createWriter(gotFileWriter, onFSFail);
 } 
+
+function dropTables() {
+    db.transaction(function(tx){
+
+        tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
+        tx.executeSql( 'DROP TABLE IF EXISTS Daily',nullHandler,nullHandler);
+        tx.executeSql( 'DROP TABLE IF EXISTS WUP',nullHandler,nullHandler);
+        tx.executeSql( 'DROP TABLE IF EXISTS Survey',nullHandler,nullHandler);
+
+    },errorHandler,successDropTable);
+
+}
+
+function successDropTable(){
+
+        window.location = 'index.html';
+}

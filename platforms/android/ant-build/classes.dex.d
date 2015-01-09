@@ -67,4 +67,11 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/hello/R.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/hello/R$drawable.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/hello/R$attr.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/R$string.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/R$xml.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/BuildConfig.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/rowLog2.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/R.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/R$drawable.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/com/example/rowLog/R$attr.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/dexedLibs/classes-8009c73ea627ecbe53fce6d3ed63ad81.jar \

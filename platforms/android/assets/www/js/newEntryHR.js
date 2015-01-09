@@ -21,6 +21,7 @@ function successCallBack() {
 }
 
 function successUploadHR() {
+    alert('Your data have been sent!');
     window.location = 'newEntry.html';
 }
 
@@ -258,10 +259,10 @@ function gotFileWriter(writer) {
     options.fileKey="file";
     options.fileName=userFileObject.toURL();
     options.mimeType="text/csv";
-    options.headers = {
-        Connection: "close"
-    }
-    options.chunkedMode = false;
+    //options.headers = {
+    //    Connection: "close"
+    //}
+    //options.chunkedMode = false;
 
     var params = new Object();
     params.newFileName = firstName + lastName + getDateStr() +'_'+ 'dailyData.csv';
@@ -272,7 +273,7 @@ function gotFileWriter(writer) {
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options,true);
 
 }
 

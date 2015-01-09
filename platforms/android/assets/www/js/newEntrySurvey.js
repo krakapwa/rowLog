@@ -22,6 +22,7 @@ function successCallBack() {
 }
 
 function successUploadSurvey() {
+    alert('Your data have been sent!');
     window.location = 'newEntry.html';
 }
 
@@ -216,10 +217,10 @@ function gotFileWriter(writer) {
     options.fileKey="file";
     options.fileName=userFileObject.toURL();
     options.mimeType="text/csv";
-    options.headers = {
-        Connection: "close"
-    }
-    options.chunkedMode = false;
+    //options.headers = {
+    //    Connection: "close"
+    //}
+    //options.chunkedMode = false;
 
     var params = new Object();
     params.newFileName = firstName + lastName + getDateStr() +'_'+ 'RestQ.csv';
@@ -230,7 +231,7 @@ function gotFileWriter(writer) {
     var ft = new FileTransfer();
     console.log('Uploading: ' + userFileObject.toURL());
     console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadSurvey, errorHandler, options);
+    ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadSurvey, errorHandler, options,true);
 
 }
 

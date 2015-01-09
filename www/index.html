@@ -10,108 +10,115 @@
       maximum-scale=1.0">
     <title>Embedded Sql Example</title>
     <script type="text/javascript" src="cordova.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </head>
   <body onload="onUserInputLoad()">
-<span id="index">
-    <h1>Welcome</h1>
-    Please let us know who you are before proceeding. Fill-in the fields
-    below and click OK. <br>
-    <br>
-    <table width="100%" cellpadding="2" cellspacing="2" border="0">
-      <tbody>
-        <tr>
-          <td valign="top">
-            <h2>Name</h2>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="middle" width="50%">First name:</td>
-          <td valign="middle"><input id="txFirstName" placeholder="First
-              Name" value="John" type="text"> </td>
-        </tr>
-        <tr>
-          <td valign="middle">Last name:</td>
-          <td valign="middle"><input id="txLastName" placeholder="Last
-              Name" value="Wayne" type="text"> </td>
-        </tr>
-        <tr>
-          <td valign="top">
-            <h2>Date of Birth</h2>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="middle">Day (2 digits):</td>
-          <td valign="middle"><input id="txDOBday" placeholder="Day"
-              value="01" type="number"> </td>
-        </tr>
-        <tr>
-          <td valign="middle">Month (2 digits):</td>
-          <td valign="middle"><input id="txDOBmonth" placeholder="Month"
-              value="04" type="number"> </td>
-        </tr>
-        <tr>
-          <td valign="middle">Year (4 digits):</td>
-          <td valign="middle"><input id="txDOByear" placeholder="Year"
-              value="1969" type="number"> </td>
-        </tr>
-        <tr>
-          <td valign="top">
-            <h2>Password</h2>
-          </td>
-          <td valign="top">
-            <table width="100%" cellpadding="2" cellspacing="2"
-              border="0">
-              <tbody>
-                <tr>
-                  <td valign="middle"><input id="txPassword"
-                      placeholder="Password" value="roeienopdebosbaan"
-                      type="text"> </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-        </tr>
-        <table width="100%" cellpadding="2" cellspacing="2" border="0">
-          <tbody>
-              <td valign="top">
-                <table width="100%" cellpadding="2" cellspacing="2"
-                  border="0">
-                  <tbody>
-                    <tr>
-                      <td valign="top">
-                        <span id="lbUsers"></span>
-                          <span id="addUserButtonId"> <a class="button "
-                            onclick="addUserToDB()" id="addUserButton"><span>Done</span></a>
-                        </span>
-                     <span id="confirmUserButtonId">
-                          <a class="button " onclick="confirmUser()"
-                            id="confirmUserButton"><span>Proceed to
-                              forms</span></a> </span>
-                      </td>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-            </tr>
-          </tbody>
-        </table>
-      </tbody>
-    </table>
-</span>
+    <span id="index">
+      <h1>Welcome</h1>
+      Please let us know who you are before proceeding. Fill-in the
+      fields below and click OK. <br>
+      <br>
+      <table width="100%" cellpadding="2" cellspacing="2" border="0">
+        <tbody>
+          <tr>
+            <td valign="top">
+              <h2>Name</h2>
+            </td>
+            <td valign="top"><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="middle" width="50%">First name:</td>
+            <td valign="middle"><input id="txFirstName"
+                placeholder="First Name" value="John" type="text"> </td>
+          </tr>
+          <tr>
+            <td valign="middle">Last name:</td>
+            <td valign="middle"><input id="txLastName" placeholder="Last
+                Name" value="Wayne" type="text"> </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <h2>Date of Birth</h2>
+            </td>
+            <td valign="top"><br>
+            </td>
+          </tr>
+          <tr>
+            <td valign="middle">Day (2 digits):</td>
+            <td valign="middle"><input id="txDOBday" placeholder="Day"
+                value="01" type="number"> </td>
+          </tr>
+          <tr>
+            <td valign="middle">Month (2 digits):</td>
+            <td valign="middle"><input id="txDOBmonth"
+                placeholder="Month" value="04" type="number"> </td>
+          </tr>
+          <tr>
+            <td valign="middle">Year (4 digits):</td>
+            <td valign="middle"><input id="txDOByear" placeholder="Year"
+                value="1969" type="number"> </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <h2>Password</h2>
+            </td>
+            <td valign="top">
+              <table width="100%" cellpadding="2" cellspacing="2"
+                border="0">
+                <tbody>
+                  <tr>
+                    <td valign="middle"><input id="txPassword"
+                        placeholder="Password" value="roeienopdebosbaan"
+                        type="text"> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+      <table width="100%" cellpadding="2" cellspacing="2" border="0">
+        <tbody>
+          <tr>
+            <td valign="top">
+              <table width="100%" cellpadding="2" cellspacing="2"
+                border="0">
+                <tbody>
+                  <tr>
+                    <td valign="top" width="50%"> <span id="lbUsers"></span>
+                      <span id="addUserButtonId"> <a class="button "
+                          onclick="addUserToDB()" id="addUserButton"><span>Done</span></a>
+                      </span> <span id="confirmUserButtonId"> <a
+                          class="button " onclick="confirmUser()"
+                          id="confirmUserButton"><span>Proceed to forms</span></a>
+                      </span> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+            <td valign="top">
+              <table width="100%" cellpadding="2" cellspacing="2"
+                border="0">
+                <tbody>
+                  <span id="index"></span><tr>
+                    <td valign="top"><span id="index"><span
+                          id="resetButtonId"><a class="button "
+                            onclick="resetClick()" id="resetButton"><span>Reset</span></a></span></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
   </body>
 </html>
