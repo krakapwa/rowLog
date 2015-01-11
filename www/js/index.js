@@ -44,19 +44,34 @@ function isNumber(n) {
 
 function createEvents(){
 
-    var now = new Date();
-    var startDate = now; // beware: month 0 = january, 11 = december
-    var endDate = new Date(2015,05,10,0,0,0,0,0);
-    var title = "My nice event";
-    var location = "Home";
-    var notes = "Some notes about this event.";
+    var startDate = new Date();
+    startDate.setHours(9);
+    startDate.setMinutes(0);
+    startDate.setSeconds(0);
+	var endDate = new Date();
+    endDate.setHours(9);
+    endDate.setMinutes(0);
+    endDate.setSeconds(0);
+
+    var title = "rowLog: Fill-in Daily heart rate and RPE";
+    var location = "";
+    var notes = "";
+    var error = function(message) { alert("Error: " + message); };
+
     var success = function(message) { 
         //alert("Success: " + JSON.stringify(message));
     };
-    var error = function(message) { alert("Error: " + message); };
 
+	//add event from today till today+14days
+	console.log(startDate);
+	endDate.setDate(startDate.getDate() + 15);
+	console.log(endDate);
 
-  window.plugins.calendar.createEvent(title,location,notes,startDate,startDate,success,error);
+	var calOptions = window.plugins.calendar.getCalendarOptions();
+	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
+	calOptions.recurrenceEndDate = endDate; // leave null to add events into infinity and beyond
+	window.plugins.calendar.createEventWithOptions(title,location,notes,startDate,endDate,calOptions,success,error);
+
 }
 
 // list the values in the database to the screen using jquery to update the #lbUsers element
