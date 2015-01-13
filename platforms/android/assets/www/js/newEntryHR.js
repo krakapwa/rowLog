@@ -125,8 +125,9 @@ function checkDailyValues() {
         if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE').val()) && isNumber($('#txWeight').val()) ){ // Check isnumber
             if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11 && $('#txWeight').val()>0 && $('#txWeight').val()<200) { // Check isnumber
                 return 1;
-            }
+            }else{
                 return 2; //Wrong numbers
+            }
         }
         return 0; //Not numbers
     }
