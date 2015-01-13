@@ -155,9 +155,9 @@ function confirmUser(){
     addUserToDB();
 
 
-    document.getElementById("index").innerHTML="Please wait...";
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
+    document.getElementById("index").innerHTML="Please wait...";
     uploadCsvUser();
     createEvents();
 

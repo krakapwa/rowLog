@@ -61,7 +61,7 @@ function createEvents(){
 
     var success = function(message) { 
         console.log('Success createEvents');
-        alert("Success: " + JSON.stringify(message));
+        //alert("Success: " + JSON.stringify(message));
     };
 
 	//add event from today till today+14days
@@ -155,9 +155,9 @@ function confirmUser(){
     addUserToDB();
 
 
-    document.getElementById("index").innerHTML="Please wait...";
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
+    document.getElementById("index").innerHTML="Please wait...";
     uploadCsvUser();
     createEvents();
 
