@@ -155,15 +155,17 @@ function confirmUser(){
     addUserToDB();
 
 
+    document.getElementById("index").innerHTML="Please wait...";
     firstName = $('#txFirstName').val();
     lastName = $('#txLastName').val();
     uploadCsvUser();
     createEvents();
-    //alert('Event added.');
-    //window.location = 'newEntry.html';
-    //window.location = 'warningEvents.html';
-    //alert('Event added.');
-    //window.location = 'newEntry.html';
+
+
+
+
+    
+
 }
 
 function uploadCsvUser(){

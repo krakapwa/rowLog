@@ -178,9 +178,8 @@ function confirmDaily(){
     addDailyToDB(); 
 
     if(checkDailyValues()==1){
+        document.getElementById("newEntryHR").innerHTML="Please wait...";
         uploadCsvDaily();
-        //alert("Data has been sent.");
-        //window.location = 'newEntry.html';
     }
     if(checkDailyValues()==2){
         alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");

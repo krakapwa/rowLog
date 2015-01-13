@@ -173,6 +173,7 @@ function confirmWUP(){
     addWUPToDB(); 
 
     if(checkWUPValues()==1){
+        document.getElementById("newEntryWUP").innerHTML="Please wait...";
         uploadCsvWUP();
     }
     if(checkWUPValues()==2){

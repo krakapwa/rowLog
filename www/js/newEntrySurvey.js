@@ -145,6 +145,7 @@ function setUserName(result){
 
 function confirmSurvey(){
     addSurveyToDB(); 
+    document.getElementById("newEntrySurvey").innerHTML="Please wait...";
     uploadCsvSurvey();
 }
 
