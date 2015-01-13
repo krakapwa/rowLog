@@ -12,6 +12,13 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+    //Set the stuff we want to be able to use in javascript, but not display in the browser window invisible
+    $(document).ready(
+        function () {
+            $('#index').hide()
+        });
+</script>
   </head>
   <body onload="onUserInputLoad()">
     <span id="index">

@@ -61,7 +61,7 @@ function createEvents(){
 
     var success = function(message) { 
         console.log('Success createEvents');
-        alert("Success: " + JSON.stringify(message));
+        //alert("Success: " + JSON.stringify(message));
     };
 
 	//add event from today till today+14days
