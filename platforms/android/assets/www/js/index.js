@@ -49,28 +49,31 @@ function createEvents(){
     startDate.setMinutes(0);
     startDate.setSeconds(0);
 	var endDate = new Date();
+	var endDateRec = new Date();
     endDate.setHours(9);
-    endDate.setMinutes(0);
+    endDate.setMinutes(30);
     endDate.setSeconds(0);
 
     var title = "rowLog: Fill-in Daily heart rate and RPE";
-    var location = "";
+    var loc = "";
     var notes = "";
     var error = function(message) { alert("Error: " + message); };
 
     var success = function(message) { 
-        //alert("Success: " + JSON.stringify(message));
+        console.log('Success createEvents');
+        alert("Success: " + JSON.stringify(message));
     };
 
 	//add event from today till today+14days
 	console.log(startDate);
-	endDate.setDate(startDate.getDate() + 15);
-	console.log(endDate);
+	endDateRec.setDate(startDate.getDate() + 15);
+        console.log(endDate);
+	console.log(endDateRec);
 
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
-	calOptions.recurrenceEndDate = endDate; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,location,notes,startDate,endDate,calOptions,success,error);
+	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,error);
 
 }
 
