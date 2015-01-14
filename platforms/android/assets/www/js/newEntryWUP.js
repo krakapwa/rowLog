@@ -176,15 +176,20 @@ function confirmWUP(){
 
     addWUPToDB(); 
 
-    if(checkWUPValues()==1){
-        document.getElementById("newEntryWUP").innerHTML="Please wait...";
-        uploadCsvWUP();
+    if(navigator.network.connection.type == Connection.NONE){
+        alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
     }
-    if(checkWUPValues()==2){
-        alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10.");
-    }
-    if(checkWUPValues()==0){
-        alert("Your data have been saved. They will be sent when all fields are non-empty.");
+    else{
+        if(checkWUPValues()==1){
+            document.getElementById("newEntryWUP").innerHTML="Please wait...";
+            uploadCsvWUP();
+        }
+        if(checkWUPValues()==2){
+            alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10.");
+        }
+        if(checkWUPValues()==0){
+            alert("Your data have been saved. They will be sent when all fields are non-empty.");
+        }
     }
 }
 

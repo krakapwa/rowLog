@@ -34,7 +34,7 @@ function onDailyLoad(){
 
     //db = openDatabase(shortName, version, displayName,maxSize);
 
-    console.log('creating table Daily');
+    //console.log('creating table Daily');
 
     db = openDatabase(shortName, version, displayName,maxSize);
     // this line will try to create the table Daily in the database just created/openned
@@ -44,29 +44,6 @@ function onDailyLoad(){
 
         tx.executeSql( 'CREATE TABLE IF NOT EXISTS Daily(DailyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, HeartRate TEXT NOT NULL, RPE TEXT NOT NULL, Weight TEXT NOT NULL, Injury TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
-
-
-    db.transaction(function(transaction) {
-        transaction.executeSql('SELECT * FROM Daily;', [],
-                function(transaction, result) {
-                    today = getDateStr();
-                    if (result != null && result.rows != null) {
-                        for (var i = 0; i < result.rows.length; i++) {
-                            var row = result.rows.item(i);
-                            thisDate = row.inputDate;
-                            if(today == thisDate){
-                                console.log("Restoring values...");
-                               document.getElementById("txHeartRate").value = row.HeartRate;
-                               document.getElementById("txRPE").value = row.RPE;
-                               document.getElementById("txWeight").value = row.Weight;
-                               document.getElementById("txInjury").value = row.Injury;
-                            }
-                        }
-
-                    }
-
-                },errorHandler);
-    },errorHandler,nullHandler);
 
 }
 
@@ -93,7 +70,38 @@ function onDeviceReady() {
         transaction.executeSql('SELECT * FROM User;', [],
                 function(transaction, result) {
                     if (result != null && result.rows != null) {
-                        setUserName(result);
+                        for (var i = 0; i < result.rows.length; i++) {
+                            var row = result.rows.item(i);
+                            firstName = row.FirstName;
+                            lastName = row.LastName;
+                            console.log('Got firstName: ' + firstName + ' lastName ' + lastName);
+                        }
+                    }
+                },errorHandler);
+    },errorHandler,nullHandler);
+
+
+
+
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM Daily;', [],
+                function(transaction, result) {
+                    today = getDateStr();
+                    if (result != null && result.rows != null) {
+                        for (var i = 0; i < result.rows.length; i++) {
+                            var row = result.rows.item(i);
+                            thisDate = row.inputDate;
+                            if(today == thisDate){
+                                console.log(row.HeartRate);
+                                console.log(row.RPE);
+                                console.log(row.Weight);
+                                console.log(row.Injury);
+                               document.getElementById("txHeartRate").value = row.HeartRate;
+                               document.getElementById("txRPE").value = row.RPE;
+                               document.getElementById("txWeight").value = row.Weight;
+                               document.getElementById("txInjury").value = row.Injury;
+                            }
+                        }
                     }
                 },errorHandler);
     },errorHandler,nullHandler);
@@ -121,9 +129,9 @@ function isNumber(n) {
 // list the values in the database to the screen using jquery to update the #lbDaily element
 function checkDailyValues() {
 
-    if( $('#txHeartRate').val().length!=0  || $('#txRPE').val().length!=0 || $('#txWeight').val().length!=0 ){ //Check emptiness
-        if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE').val()) && isNumber($('#txWeight').val()) ){ // Check isnumber
-            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11 && $('#txWeight').val()>0 && $('#txWeight').val()<200) { // Check isnumber
+    if( $('#txHeartRate').toString().length!=0  || $('#txRPE').toString().length!=0){ //Check emptiness
+        if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE').val())  ){ // Check isnumber
+            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11  ) { // Check isnumber
                 return 1;
             }else{
                 return 2; //Wrong numbers
@@ -138,13 +146,14 @@ function checkDailyValues() {
 }
 
 // this is the function that puts values into the database using the values from the text boxes on the screen
-function addDailyToDB() {
+function addDailyToDB(callback) {
 
     //if(checkDailyValues()) {
+    console.log('txHeartRate = ' + $('#txHeartRate').val());
         db.transaction(function(transaction) {
             transaction.executeSql('INSERT OR REPLACE INTO Daily(DailyId, inputDate, inputTime, HeartRate, RPE, Weight, Injury) VALUES ((select DailyId from Daily where inputDate = ?),?,?,?,?,?,?)', [getDateStr(), getDateStr(), getTimeStr(), $('#txHeartRate').val(), $('#txRPE').val(), $('#txWeight').val(), $('#txInjury').val()],
 
-                    nullHandler,errorHandler);
+                    callback,errorHandler);
         });
 
         //alert("Your data has been saved.");
@@ -165,6 +174,8 @@ function countRows(test, callBack){
 
 function setUserName(result){
     
+    console.log('Number of rows in user:');
+    console.log(result.rows.length);
     for (var i = 0; i < result.rows.length; i++) {
         var row = result.rows.item(i);
     }
@@ -176,17 +187,23 @@ function setUserName(result){
 
 function confirmDaily(){
 
-    addDailyToDB(); 
 
-    if(checkDailyValues()==1){
-        document.getElementById("newEntryHR").innerHTML="Please wait...";
-        uploadCsvDaily();
+    if(navigator.network.connection.type == Connection.NONE){
+        alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
+        addDailyToDB(); 
     }
-    if(checkDailyValues()==2){
-        alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
-    }
-    if(checkDailyValues()==0){
-        alert("Your values have been saved. When the remaining empty fields are completed, click save/send again to send your data.");
+    else{
+        if(checkDailyValues()==1){
+            //document.getElementById("newEntryHR").innerHTML="Please wait...";
+            addDailyToDB(uploadCsvDaily); 
+        }
+        if(checkDailyValues()==2){
+            alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
+        }
+        if(checkDailyValues()==0){
+            alert("Your values have been saved. When the remaining empty fields are completed, click save/send again to send your data.");
+            addDailyToDB(); 
+        }
     }
 }
 
@@ -195,20 +212,21 @@ function uploadCsvDaily(){
 
     console.log('makeCsvDaily');
 
-    csvData = "inputDate" + "," + "inputTime" + "," + "HeartRate" + "," + "RPE" + "," + "Weight" + "," + "Injury" + "\n";
-    db.transaction(function(transaction) {
-        transaction.executeSql('SELECT * FROM Daily;', [],
-                function(transaction, result) {
-                    if (result != null && result.rows != null) {
-                        for (var i = 0; i < result.rows.length; i++) {
-                            var row = result.rows.item(i);
-                            csvData += row.inputDate + ',' + row.inputTime + ',' + row.HeartRate + ',' + row.RPE + ',' + row.Weight + ',' + row.Injury + '\n';
+        csvData = "inputDate" + "," + "inputTime" + "," + "HeartRate" + "," + "RPE" + "," + "Weight" + "," + "Injury" + "\n";
+        db.transaction(function(transaction) {
+            transaction.executeSql('SELECT * FROM Daily;', [],
+                    function(transaction, result) {
+                        if (result != null && result.rows != null) {
+                            for (var i = 0; i < result.rows.length; i++) {
+                                var row = result.rows.item(i);
+                                csvData += row.inputDate + ',' + row.inputTime + ',' + row.HeartRate + ',' + row.RPE + ',' + row.Weight + ',' + row.Injury + '\n';
+                            }
+                            fileWrite();
                         }
-                        fileWrite();
-                    }
-                },errorHandler);
-    },errorHandler,nullHandler);
+                    },errorHandler);
+        },errorHandler,nullHandler);
 
+    
 
 }
 

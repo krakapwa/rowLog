@@ -53,6 +53,8 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/org/apache/cordova/file/FileUtils$5.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/org/apache/cordova/file/FileUtils$11.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/org/apache/cordova/file/FileUtils$14.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager.class \
+/home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/nl/xservices/plugins/accessor/CalendarProviderAccessor.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Event.class \
 /home/krakapwa/public_html/rowLog2/platforms/android/ant-build/classes/nl/xservices/plugins/accessor/LegacyCalendarAccessor.class \

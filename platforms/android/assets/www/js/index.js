@@ -122,8 +122,11 @@ function checkUserValues() {
 }
 
 // this is the function that puts values into the database using the values from the text boxes on the screen
-function addUserToDB() {
+function addUserToDB(callback) {
 
+
+    firstName = $('#txFirstName').val();
+    lastName = $('#txLastName').val();
 
     if(checkUserValues()) {
 
@@ -135,8 +138,11 @@ function addUserToDB() {
 
         csvData = 'FirstName, LastName, DOBday, DOBmonth, DOByear\n';
         csvData += $('#txFirstName').val() + ',' + $('#txLastName').val() + ',' + $('#txDOBday').val() + ',' + $('#txDOBmonth').val() + ',' + $('#txDOByear').val() + '\n';
-    }
 
+        if (callback) {
+            callback();
+        }
+    }
 }
 
 function countRows(test, callBack){
@@ -152,19 +158,12 @@ function countRows(test, callBack){
 
 function confirmUser(){
 
-    addUserToDB();
+    addUserToDB(uploadCsvUser);
 
 
-    firstName = $('#txFirstName').val();
-    lastName = $('#txLastName').val();
-    document.getElementById("index").innerHTML="Please wait...";
-    uploadCsvUser();
+    //document.getElementById("index").innerHTML="Please wait...";
     createEvents();
 
-
-
-
-    
 
 }
 
@@ -179,18 +178,7 @@ function uploadCsvUser(){
 
 function uploadFile(userFileObject){
     console.log('in uploadFile');
-    db.transaction(function(transaction) {
-        transaction.executeSql('SELECT * FROM User;', [],
-                function(transaction, result) {
-                    console.log(result);
-                    //if (result != null && result.rows != null) {
-                    if (result != null) {
-                        for (var i = 0; i < result.rows.length; i++) {
-                            var row = result.rows.item(i);
-                        }
 
-                        firstName = row.FirstName;
-                        lastName = row.LastName;
                         console.log(firstName);
                         console.log(lastName);
 
@@ -213,10 +201,7 @@ function uploadFile(userFileObject){
                         console.log('Uploading: ' + userFileObject.toURL());
                         console.log('With newFileName: ' + options.params.newFileName);
                         ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
-                    }
 
-                },errorHandler);
-                },errorHandler,nullHandler);
 }
 
 function getDateStr(){
@@ -308,14 +293,6 @@ function onDeviceReady() {
         tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
-    // Check if User infos are already done
-    var table = 'User';
-    countRows(table,function(result_count){
-        console.log('There are ' + result_count + ' rows in table ' + table );
-        if(result_count > 0){
-            confirmUser();
-        }	
-    });
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');

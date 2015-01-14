@@ -44,6 +44,32 @@ function onSurveyLoad(){
         tx.executeSql( 'CREATE TABLE IF NOT EXISTS Survey(SurveyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, Q1 TEXT NOT NULL, Q2 TEXT NOT NULL, Q3 TEXT NOT NULL, Q4 TEXT NOT NULL, Q5 TEXT NOT NULL, Q6 TEXT NOT NULL, Q7 TEXT NOT NULL, Q8 TEXT NOT NULL, Q9 TEXT NOT NULL, Q10 TEXT NOT NULL, Q11 TEXT NOT NULL, Q12 TEXT NOT NULL, Q13 TEXT NOT NULL, Q14 TEXT NOT NULL, Q15 TEXT NOT NULL, Q16 TEXT NOT NULL, Q17 TEXT NOT NULL, Q18 TEXT NOT NULL, Q19 TEXT NOT NULL, Q20 TEXT NOT NULL, Q21 TEXT NOT NULL, Q22 TEXT NOT NULL, Q23 TEXT NOT NULL, Q24 TEXT NOT NULL, Q25 TEXT NOT NULL, Q26 TEXT NOT NULL, Q27 TEXT NOT NULL, Q28 TEXT NOT NULL, Q29 TEXT NOT NULL, Q30 TEXT NOT NULL, Q31 TEXT NOT NULL, Q32 TEXT NOT NULL, Q33 TEXT NOT NULL, Q34 TEXT NOT NULL, Q35 TEXT NOT NULL, Q36 TEXT NOT NULL, Q37 TEXT NOT NULL, Q38 TEXT NOT NULL, Q39 TEXT NOT NULL, Q40 TEXT NOT NULL, Q41 TEXT NOT NULL, Q42 TEXT NOT NULL, Q43 TEXT NOT NULL, Q44 TEXT NOT NULL, Q45 TEXT NOT NULL, Q46 TEXT NOT NULL, Q47 TEXT NOT NULL, Q48 TEXT NOT NULL, Q49 TEXT NOT NULL, Q50 TEXT NOT NULL, Q51 TEXT NOT NULL, Q52 TEXT NOT NULL, Q53 TEXT NOT NULL, Q54 TEXT NOT NULL, Q55 TEXT NOT NULL, Q56 TEXT NOT NULL, Q57 TEXT NOT NULL, Q58 TEXT NOT NULL, Q59 TEXT NOT NULL, Q60 TEXT NOT NULL, Q61 TEXT NOT NULL, Q62 TEXT NOT NULL, Q63 TEXT NOT NULL, Q64 TEXT NOT NULL, Q65 TEXT NOT NULL, Q66 TEXT NOT NULL, Q67 TEXT NOT NULL, Q68 TEXT NOT NULL, Q69 TEXT NOT NULL, Q70 TEXT NOT NULL, Q71 TEXT NOT NULL, Q72 TEXT NOT NULL, Q73 TEXT NOT NULL, Q74 TEXT NOT NULL, Q75 TEXT NOT NULL, Q76 TEXT NOT NULL, Q77 TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM Survey;', [],
+                function(transaction, result) {
+                    today = getDateStr();
+                    if (result != null && result.rows != null) {
+                        for (var i = 0; i < result.rows.length; i++) {
+                            var row = result.rows.item(i);
+                            thisDate = row.inputDate;
+                            if(today == thisDate){
+                                console.log("Restoring values...");
+                                $('input[name=Q1]').val([row.Q1]);
+                                var str;
+                                for (var j=1; j<77; j++){
+
+                                    str = "$('input[name=Q" + j +"]').val([row.Q" + j + "]);";
+                                        //console.log(str);
+                                    eval(str);
+
+                                }
+                            }
+                        }
+
+                    }
+
+                },errorHandler);
+    },errorHandler,nullHandler);
 }
 
 function onDeviceReady() {
@@ -145,8 +171,13 @@ function setUserName(result){
 
 function confirmSurvey(){
     addSurveyToDB(); 
-    document.getElementById("newEntrySurvey").innerHTML="Please wait...";
-    uploadCsvSurvey();
+    if(navigator.network.connection.type == Connection.NONE){
+        alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
+    }
+    else{
+        //document.getElementById("newEntrySurvey").innerHTML="Please wait...";
+        uploadCsvSurvey();
+    }
 }
 
 function uploadCsvSurvey(){

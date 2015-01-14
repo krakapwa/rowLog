@@ -48,6 +48,7 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/spec \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.network-information \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/www \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/test \
@@ -76,6 +77,9 @@
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Metadata.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileReader.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www/network.js \
+/home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www/Connection.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js \
 /home/krakapwa/public_html/rowLog2/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js \
