@@ -172,6 +172,12 @@ function uploadCsvUser(){
 
     console.log('makeCsvUser');
 
+    $("#pleasewait").dialog({
+        autoOpen: true,
+        modal: true,
+        dialogClass: "dlg-no-close"
+    });
+
     fileWrite(); 
     console.log(userFileObject);
 }

@@ -181,7 +181,7 @@ function confirmWUP(){
     }
     else{
         if(checkWUPValues()==1){
-            document.getElementById("newEntryWUP").innerHTML="Please wait...";
+            //document.getElementById("newEntryWUP").innerHTML="Please wait...";
             uploadCsvWUP();
         }
         if(checkWUPValues()==2){
@@ -197,6 +197,12 @@ function uploadCsvWUP(){
 
 
     console.log('makeCsvWUP');
+
+    $("#pleasewait").dialog({
+        autoOpen: true,
+        modal: true,
+        dialogClass: "dlg-no-close"
+    });
 
     csvData = "inputDate" + "," + "inputTime" + "," + "RPE" + "," + "HRRWUP" + "," + "HRR60" + "\n";
     db.transaction(function(transaction) {

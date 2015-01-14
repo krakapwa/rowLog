@@ -194,7 +194,7 @@ function confirmDaily(){
     }
     else{
         if(checkDailyValues()==1){
-            //document.getElementById("newEntryHR").innerHTML="Please wait...";
+
             addDailyToDB(uploadCsvDaily); 
         }
         if(checkDailyValues()==2){
@@ -211,6 +211,11 @@ function uploadCsvDaily(){
 
 
     console.log('makeCsvDaily');
+    $("#pleasewait").dialog({
+        autoOpen: true,
+        modal: true,
+        dialogClass: "dlg-no-close"
+    });
 
         csvData = "inputDate" + "," + "inputTime" + "," + "HeartRate" + "," + "RPE" + "," + "Weight" + "," + "Injury" + "\n";
         db.transaction(function(transaction) {

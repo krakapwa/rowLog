@@ -198,6 +198,12 @@ function uploadCsvWUP(){
 
     console.log('makeCsvWUP');
 
+    $("#pleasewait").dialog({
+        autoOpen: true,
+        modal: true,
+        dialogClass: "dlg-no-close"
+    });
+
     csvData = "inputDate" + "," + "inputTime" + "," + "RPE" + "," + "HRRWUP" + "," + "HRR60" + "\n";
     db.transaction(function(transaction) {
         transaction.executeSql('SELECT * FROM WUP;', [],
