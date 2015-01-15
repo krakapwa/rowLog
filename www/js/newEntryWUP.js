@@ -176,7 +176,7 @@ function confirmWUP(){
 
     addWUPToDB(); 
 
-    if(navigator.network.connection.type == Connection.NONE){
+    if(navigator.connection.type == Connection.NONE){
         alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
     }
     else{
