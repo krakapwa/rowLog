@@ -17,11 +17,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Calendar\"><param name=\"android-package\" value=\"nl.xservices.plugins.Calendar\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"Calendar\"><param name=\"android-package\" value=\"nl.xservices.plugins.Calendar\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -60,10 +60,10 @@
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.example.hello"
         },
-        "nl.x-services.plugins.calendar": {
-            "PACKAGE_NAME": "com.example.hello"
-        },
         "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.example.rowLog"
+        },
+        "nl.x-services.plugins.calendar": {
             "PACKAGE_NAME": "com.example.rowLog"
         }
     },
