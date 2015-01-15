@@ -158,11 +158,18 @@ function countRows(test, callBack){
 
 function confirmUser(){
 
-    addUserToDB(uploadCsvUser);
+    if(navigator.connection.type == Connection.NONE){
+        alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
+    }
+    else {
 
+        createEvents();
+        addUserToDB(uploadCsvUser);
+    }
+
+    return;
 
     //document.getElementById("index").innerHTML="Please wait...";
-    createEvents();
 
 
 }
