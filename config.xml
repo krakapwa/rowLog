@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.rowLog" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.example.TPlog" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>rowLog</name>
     <description>
-        Rowing log book.
+        T&P log book.
     </description>
     <author email="olol85@gmail.com" href="http://phonegap.com">
         PhoneGap Team
