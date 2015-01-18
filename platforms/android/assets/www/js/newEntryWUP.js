@@ -122,7 +122,7 @@ function checkWUPValues() {
 
     if( $('#txHRRWUP').val().length!=0 || $('#txHRR60').val().length!=0 || $('#txRPE').val().length!=0 ){
         if( isNumber($('#txHRRWUP').val())  && isNumber($('#txHRR60').val()) && isNumber($('#txRPE').val())){
-            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<110 && $('#txHRR60').val()>0 && $('#txHRR60').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11) { // Check isnumber
+            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<200 && $('#txHRR60').val()>0 && $('#txHRR60').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11) { // Check isnumber
             return 1;
         }else{
             return 2;
@@ -199,7 +199,7 @@ function uploadCsvWUP(){
     console.log('makeCsvWUP');
 
     $("#pleasewait").dialog({
-        autoOpen: true,
+        autoOpen: false,
         modal: true,
         dialogClass: "dlg-no-close"
     });

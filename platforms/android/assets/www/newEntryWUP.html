@@ -40,18 +40,18 @@
     <table width="100%" cellpadding="2" cellspacing="2" border="0">
       <tbody>
         <tr>
-          <td valign="top" width="50%">Rate of perceived exertion*:</td>
+          <td valign="top" width="50%">RPE*:</td>
           <td valign="top">&nbsp; <input id="txRPE" placeholder="RPE"
               value="" type="number"> </td>
         </tr>
         <tr>
-          <td valign="top" width="50%">Heart Rate at end of WUP:</td>
+          <td valign="top" width="50%">Heart Rate at end of SRT:</td>
           <td valign="top">&nbsp; <input id="txHRRWUP"
-              placeholder="HRRWUP" value="" type="number"> </td>
+              placeholder="HR0" value="" type="number"> </td>
         </tr>
         <tr>
-          <td valign="top">Heart Rate 1 minute post WUP:</td>
-          <td valign="top">&nbsp;<input id="txHRR60" placeholder="HRR60"
+          <td valign="top">Heart Rate 1 minute post SRT:</td>
+          <td valign="top">&nbsp;<input id="txHRR60" placeholder="HR60"
               value="" type="number"> </td>
         </tr>
         <tr>
@@ -63,12 +63,12 @@
 
         data</span></a><br>
     <br>
-    (*) RPE is a number from 0 to 10. Please refer to the table below:<br>
+    (*) RPE stands for Rate of Perceived Exertion. It is a number from 0 to 10. Please refer to the table below:<br>
     <br>
     <img style="width: 170px; height: 313px;" alt="RPE table"
       src="img/RPE.jpg" width="170" height="313"><br>
     <span id="lbWUP"></span>
-    <div id="pleasewait" title="Thank you">
+    <div id="pleasewait" title="Thank you" style="display:none;">
     <p>Please wait while your data is being sent...</p>
     </div>
     </span>
