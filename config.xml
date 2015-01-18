@@ -2,7 +2,7 @@
 <widget id="com.example.TPlog" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>rowLog</name>
     <description>
-        T&P log book.
+        TP log book.
     </description>
     <author email="olol85@gmail.com" href="http://phonegap.com">
         PhoneGap Team
