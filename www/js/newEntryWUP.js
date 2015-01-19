@@ -122,7 +122,7 @@ function checkWUPValues() {
 
     if( $('#txHRRWUP').val().length!=0 || $('#txHRR60').val().length!=0 || $('#txRPE').val().length!=0 ){
         if( isNumber($('#txHRRWUP').val())  && isNumber($('#txHRR60').val()) && isNumber($('#txRPE').val())){
-            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<200 && $('#txHRR60').val()>0 && $('#txHRR60').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11) { // Check isnumber
+            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<200 && $('#txHRR60').val()>0 && $('#txHRR60').val()<200 && $('#txRPE').val()>0 && $('#txRPE').val()<11) { // Check isnumber
             return 1;
         }else{
             return 2;
@@ -185,7 +185,7 @@ function confirmWUP(){
             uploadCsvWUP();
         }
         if(checkWUPValues()==2){
-            alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10.");
+            alert("Check your data: Heart rate must be between 0 and 200, RPE between 0 and 10.");
         }
         if(checkWUPValues()==0){
             alert("Your data have been saved. They will be sent when all fields are non-empty.");

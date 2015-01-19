@@ -200,7 +200,7 @@ function confirmDaily(){
             addDailyToDB(uploadCsvDaily); 
         }
         if(checkDailyValues()==2){
-            alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
+            alert("Check your data: Heart rate must be between 0 and 200, RPE between 0 and 10, Weight between 0 and 200.");
         }
         if(checkDailyValues()==0){
             alert("Your values have been saved. When the remaining empty fields are completed, click save/send again to send your data.");
