@@ -62,6 +62,13 @@
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor.class \
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/nl/xservices/plugins/accessor/AbstractCalendarAccessor$Attendee.class \
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/nl/xservices/plugins/Calendar.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/R$string.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/R$xml.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/BuildConfig.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/R.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/CordovaApp.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/R$drawable.class \
+/home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TenPlog/R$attr.class \
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TPlog/R$string.class \
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TPlog/R$xml.class \
 /home/krakapwa/Documents/rowLog/platforms/android/ant-build/classes/com/example/TPlog/BuildConfig.class \

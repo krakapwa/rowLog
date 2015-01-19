@@ -8,6 +8,7 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
+    <icon src="icon.png" />
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="default" />
