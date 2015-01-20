@@ -124,6 +124,7 @@
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/bada \
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/webos/icon-64.png \
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/ios/icon120.png \
+/home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/ios/icon-57.png \
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/ios/icon152.png \
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/ios/icon76.png \
 /home/krakapwa/Documents/rowLog/platforms/android/assets/www/res/icon/blackberry/icon-80.png \
