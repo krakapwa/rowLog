@@ -39,10 +39,11 @@
     <icon gap:platform="android" gap:qualifier="xhdpi" src="www/res/icon/android/icon96.png" />
     <icon gap:platform="winphone" src="www/res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="www/res/icon/windows-phone/icon-173-tile.png" />
-    <icon src="www/res/icon/ios/Icon-120.png" gap:platform="android" width="120" height="120" />
-    <icon src="www/res/icon/ios/Icon-76.png" gap:platform="android" width="76" height="76" />
-    <icon src="www/res/icon/ios/Icon-152.png" gap:platform="android" width="152" height="152" />
-    <icon src="www/res/icon/ios/Icon-57.png" gap:platform="android" width="57" height="57" />
+    <icon src="www/res/icon/ios/Icon-120.png" gap:platform="ios" width="120" height="120" />
+    <icon src="www/res/icon/ios/Icon-76.png" gap:platform="ios" width="76" height="76" />
+    <icon src="www/res/icon/ios/Icon-152.png" gap:platform="ios" width="152" height="152" />
+    <icon src="www/res/icon/ios/Icon-57.png" gap:platform="ios" width="57" height="57" />
+    <icon src="www/res/icon/ios/Icon-72.png" gap:platform="ios" width="72" height="72" />
 
 
 
