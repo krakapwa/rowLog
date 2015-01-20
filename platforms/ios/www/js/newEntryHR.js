@@ -42,7 +42,7 @@ function onDailyLoad(){
 
         //tx.executeSql( 'DROP TABLE IF EXISTS Daily',nullHandler,nullHandler);
 
-        tx.executeSql( 'CREATE TABLE IF NOT EXISTS Daily(DailyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, HeartRate TEXT NOT NULL, RPE TEXT NOT NULL, Weight TEXT NOT NULL, Injury TEXT NOT NULL)',[],nullHandler,errorHandler);
+        tx.executeSql( 'CREATE TABLE IF NOT EXISTS Daily(DailyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, HeartRate TEXT NOT NULL, RPE1 TEXT NOT NULL, RPE2 TEXT NOT NULL, Weight TEXT NOT NULL, Comments TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
 }
@@ -93,13 +93,15 @@ function onDeviceReady() {
                             thisDate = row.inputDate;
                             if(today == thisDate){
                                 console.log(row.HeartRate);
-                                console.log(row.RPE);
+                                console.log(row.RPE1);
+                                console.log(row.RPE2);
                                 console.log(row.Weight);
-                                console.log(row.Injury);
+                                console.log(row.Comments);
                                document.getElementById("txHeartRate").value = row.HeartRate;
-                               document.getElementById("txRPE").value = row.RPE;
+                               document.getElementById("txRPE1").value = row.RPE1;
+                               document.getElementById("txRPE2").value = row.RPE2;
                                document.getElementById("txWeight").value = row.Weight;
-                               document.getElementById("txInjury").value = row.Injury;
+                               document.getElementById("txComments").value = row.Comments;
                             }
                         }
                     }
@@ -129,9 +131,9 @@ function isNumber(n) {
 // list the values in the database to the screen using jquery to update the #lbDaily element
 function checkDailyValues() {
 
-    if( $('#txHeartRate').toString().length!=0  || $('#txRPE').toString().length!=0){ //Check emptiness
-        if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE').val())  ){ // Check isnumber
-            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<110 && $('#txRPE').val()>0 && $('#txRPE').val()<11  ) { // Check isnumber
+    if( $('#txHeartRate').toString().length!=0  || $('#txRPE1').toString().length!=0){ //Check emptiness
+        if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE1').val())  ){ // Check isnumber
+            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<200 && $('#txRPE1').val()>0 && $('#txRPE1').val()<11  ) { // Check isnumber
                 return 1;
             }else{
                 return 2; //Wrong numbers
@@ -151,7 +153,7 @@ function addDailyToDB(callback) {
     //if(checkDailyValues()) {
     console.log('txHeartRate = ' + $('#txHeartRate').val());
         db.transaction(function(transaction) {
-            transaction.executeSql('INSERT OR REPLACE INTO Daily(DailyId, inputDate, inputTime, HeartRate, RPE, Weight, Injury) VALUES ((select DailyId from Daily where inputDate = ?),?,?,?,?,?,?)', [getDateStr(), getDateStr(), getTimeStr(), $('#txHeartRate').val(), $('#txRPE').val(), $('#txWeight').val(), $('#txInjury').val()],
+            transaction.executeSql('INSERT OR REPLACE INTO Daily(DailyId, inputDate, inputTime, HeartRate, RPE1,RPE2, Weight, Comments) VALUES ((select DailyId from Daily where inputDate = ?),?,?,?,?,?,?,?)', [getDateStr(), getDateStr(), getTimeStr(), $('#txHeartRate').val(), $('#txRPE1').val(), $('#txRPE2').val(), $('#txWeight').val(), $('#txComments').val()],
 
                     callback,errorHandler);
         });
@@ -198,7 +200,7 @@ function confirmDaily(){
             addDailyToDB(uploadCsvDaily); 
         }
         if(checkDailyValues()==2){
-            alert("Check your data: Heart rate must be between 0 and 110, RPE between 0 and 10, Weight between 0 and 200.");
+            alert("Check your data: Heart rate must be between 0 and 200, RPE between 0 and 10, Weight between 0 and 200.");
         }
         if(checkDailyValues()==0){
             alert("Your values have been saved. When the remaining empty fields are completed, click save/send again to send your data.");
@@ -217,14 +219,14 @@ function uploadCsvDaily(){
         dialogClass: "dlg-no-close"
     });
 
-        csvData = "inputDate" + "," + "inputTime" + "," + "HeartRate" + "," + "RPE" + "," + "Weight" + "," + "Injury" + "\n";
+        csvData = "inputDate" + "," + "inputTime" + "," + "HeartRate" + "," + "RPE1" + "," + "RPE2"+ "," + "Weight" + "," + "Comments" + "\n";
         db.transaction(function(transaction) {
             transaction.executeSql('SELECT * FROM Daily;', [],
                     function(transaction, result) {
                         if (result != null && result.rows != null) {
                             for (var i = 0; i < result.rows.length; i++) {
                                 var row = result.rows.item(i);
-                                csvData += row.inputDate + ',' + row.inputTime + ',' + row.HeartRate + ',' + row.RPE + ',' + row.Weight + ',' + row.Injury + '\n';
+                                csvData += row.inputDate + ',' + row.inputTime + ',' + row.HeartRate + ',' + row.RPE1 + ',' + row.RPE2 + ','+ row.Weight + ',' + row.Comments + '\n';
                             }
                             fileWrite();
                         }
