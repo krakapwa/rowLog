@@ -2,7 +2,7 @@
 <widget id="com.example.TenPlog" version="0.89" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>TenPLog</name>
     <description>
-        TP log book.
+        T&P log book.
     </description>
     <author email="olol85@gmail.com" href="mailto:olol85@gmail.com">
         PhoneGap Team
