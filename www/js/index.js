@@ -270,8 +270,8 @@ function gotFileWriter(writer) {
                         console.log(options);
 
                         var ft = new FileTransfer();
-                        alert('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.params.newFileName);
+                        console.log('Uploading: ' + userFileObject.toURL());
+                        alert('With newFileName: ' + options.params.newFileName);
                         ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
 
 }
