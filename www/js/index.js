@@ -43,6 +43,9 @@ function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+function errorEvents(){
+    alert('calendar problem');
+}
 function createEvents(){
 
     var startDate = new Date();
@@ -74,7 +77,7 @@ function createEvents(){
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
 	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,nullHandler);
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,errorEvents);
 
 }
 
