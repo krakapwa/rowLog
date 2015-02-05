@@ -245,7 +245,7 @@ function gotFileWriter(writer) {
     console.log('gotFileWriter');
     //csvData = "FirstName" + "," + "LastName" + "," + "DOBday" + "," + "DOBmonth" + "," + "DOByear" + "\n";
     console.log('writing:');
-    console.log(csvData);
+    alert(csvData);
     // Create a new Blob and write it 
     var blob = new Blob([csvData], {type: 'text/plain'});
 
