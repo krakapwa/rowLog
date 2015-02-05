@@ -258,9 +258,9 @@ function gotFileWriter(writer) {
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
-                        //options.headers = {
-                        //    Connection: "close"
-                        //}
+                        options.headers = {
+                            Connection: "close"
+                        }
                         //options.chunkedMode = false;
 
                         var params = new Object();
