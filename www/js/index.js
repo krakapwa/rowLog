@@ -250,26 +250,29 @@ function gotFileWriter(writer) {
     var blob = new Blob([csvData], {type: 'text/plain'});
 
     writer.write(blob);
+    writer.onwriteend = function(evt) {
 
-                        console.log(firstName);
-                        console.log(lastName);
+        console.log(firstName);
+        console.log(lastName);
 
-                        var options = new FileUploadOptions();
-                        options.fileKey="file";
-                        options.fileName=userFileObject.toURL();
-                        options.mimeType="text/csv";
-                        //options.chunkedMode = false;
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=userFileObject.toURL();
+        options.mimeType="text/csv";
+        //options.chunkedMode = false;
 
-                        var params = new Object();
-                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
-                        options.params = params;
+        var params = new Object();
+        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
+        options.params = params;
 
-                        console.log(options);
+        console.log(options);
 
-                        var ft = new FileTransfer();
-                        console.log('Uploading: ' + userFileObject.toURL());
-                        alert('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
+        var ft = new FileTransfer();
+        console.log('Uploading: ' + userFileObject.toURL());
+        alert('With newFileName: ' + options.params.newFileName);
+        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
+    };
+
 
 }
 
