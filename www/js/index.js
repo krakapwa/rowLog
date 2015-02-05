@@ -11,8 +11,6 @@ var csvData;
 var firstName;
 var lastName;
 
-var lcStorage;
-
 
 function errorHandler(transaction, error) {
     console.log('Error: code: ' + error.code);
@@ -92,7 +90,7 @@ function createEvents(){
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
 	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,addUserToDB(uploadCsvUser),errorEvents);
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,errorEvents);
         
 
 }
@@ -144,13 +142,12 @@ function checkUserValues() {
 // this is the function that puts values into the database using the values from the text boxes on the screen
 function addUserToDB(callback) {
 
-
     //firstName = $('#txFirstName').val();
     //lastName = $('#txLastName').val();
 
     if(checkUserValues()) {
 
-    // this is the section that actually inserts the values into the User table
+        // this is the section that actually inserts the values into the User table
         db.transaction(function(transaction) {
             transaction.executeSql('INSERT INTO User(FirstName, LastName, DOBday, DOBmonth, DOByear) VALUES (?,?,?,?,?)',[$('#txFirstName').val(), $('#txLastName').val(), $('#txDOBday').val(), $('#txDOBmonth').val(), $('#txDOByear').val()],
                     nullHandler,errorHandler);
@@ -263,10 +260,10 @@ function gotFileWriter(writer) {
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
-                        //options.headers = {
-                        //    Connection: "close"
-                        //}
-                        //options.chunkedMode = false;
+                        options.headers = {
+                            Connection: "close"
+                        }
+                        options.chunkedMode = false;
 
                         var params = new Object();
                         params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
