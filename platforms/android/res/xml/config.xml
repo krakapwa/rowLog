@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.TenPlog" version="0.88" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.example.TenPlog" version="0.91" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="Calendar">
-        <param name="android-package" value="nl.xservices.plugins.Calendar" />
-    </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
@@ -16,7 +13,7 @@
     </feature>
     <name>TenPLog</name>
     <description>
-        TP log book.
+        TenP log book.
     </description>
     <author email="olol85@gmail.com" href="mailto:olol85@gmail.com">
         PhoneGap Team
@@ -53,5 +50,10 @@
     <icon gap:platform="android" gap:qualifier="xhdpi" src="www/res/icon/android/icon96.png" />
     <icon gap:platform="winphone" src="www/res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="www/res/icon/windows-phone/icon-173-tile.png" />
+    <icon gap:platform="ios" height="120" src="www/res/icon/ios/Icon-120.png" width="120" />
+    <icon gap:platform="ios" height="76" src="www/res/icon/ios/Icon-76.png" width="76" />
+    <icon gap:platform="ios" height="152" src="www/res/icon/ios/Icon-152.png" width="152" />
+    <icon gap:platform="ios" height="57" src="www/res/icon/ios/Icon-57.png" width="57" />
+    <icon gap:platform="ios" height="72" src="www/res/icon/ios/Icon-72.png" width="72" />
     <access origin="*" />
 </widget>

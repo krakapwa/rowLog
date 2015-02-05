@@ -14,12 +14,13 @@ var lastName;
 var lcStorage;
 
 
-// this is called when an error happens in a transaction
 function errorHandler(transaction, error) {
     console.log('Error: code: ' + error.code);
 }
 
-// this is called when a successful transaction happens
+function nullHandler() {
+}
+
 function successCallBack() {
     console.log("DEBUGGING: success");
 }
@@ -73,7 +74,7 @@ function createEvents(){
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
 	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,error);
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,nullHandler);
 
 }
 

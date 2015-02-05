@@ -1,7 +1,18 @@
 {
     "prepare_queue": {
         "installed": [],
-        "uninstalled": []
+        "uninstalled": [
+            {
+                "plugin": "nl.x-services.plugins.calendar",
+                "id": "nl.x-services.plugins.calendar",
+                "topLevel": true
+            },
+            {
+                "plugin": "nl.x-services.plugins.calendar",
+                "id": "nl.x-services.plugins.calendar",
+                "topLevel": true
+            }
+        ]
     },
     "config_munge": {
         "files": {
