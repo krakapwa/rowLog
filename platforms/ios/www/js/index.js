@@ -14,17 +14,19 @@ var lastName;
 var lcStorage;
 
 
-// this is called when an error happens in a transaction
 function errorHandler(transaction, error) {
     console.log('Error: code: ' + error.code);
 }
 
-// this is called when a successful transaction happens
+function nullHandler() {
+}
+
 function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
 function successUploadUser() {
+    createEvents();
     window.location = 'warningEvents.html';
 }
 
@@ -36,12 +38,29 @@ function onUserInputLoad(){
     $('#index').hide();
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
+
+    console.log('opening database');
+    db = openDatabase(shortName, version, displayName,maxSize);
+
+    console.log('creating table User');
+    // this line will try to create the table User in the database just created/openned
+    db.transaction(function(tx){
+
+        // you can uncomment this next line if you want the User table to be empty each time the application runs
+        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
+
+        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
+    },errorHandler,successCallBack);
+
 }
 
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+function errorEvents(){
+    alert('calendar problem');
+}
 function createEvents(){
 
     var startDate = new Date();
@@ -73,7 +92,8 @@ function createEvents(){
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
 	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,error);
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,addUserToDB(uploadCsvUser),errorEvents);
+        
 
 }
 
@@ -125,8 +145,8 @@ function checkUserValues() {
 function addUserToDB(callback) {
 
 
-    firstName = $('#txFirstName').val();
-    lastName = $('#txLastName').val();
+    //firstName = $('#txFirstName').val();
+    //lastName = $('#txLastName').val();
 
     if(checkUserValues()) {
 
@@ -162,8 +182,7 @@ function confirmUser(){
         alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
     }
     else {
-
-        createEvents();
+        
         addUserToDB(uploadCsvUser);
     }
 
@@ -189,33 +208,6 @@ function uploadCsvUser(){
     console.log(userFileObject);
 }
 
-function uploadFile(userFileObject){
-    console.log('in uploadFile');
-
-                        console.log(firstName);
-                        console.log(lastName);
-
-                        var options = new FileUploadOptions();
-                        options.fileKey="file";
-                        options.fileName=userFileObject.toURL();
-                        options.mimeType="text/csv";
-                        //options.headers = {
-                        //    Connection: "close"
-                        //}
-                        //options.chunkedMode = false;
-
-                        var params = new Object();
-                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
-                        options.params = params;
-
-                        console.log(options);
-
-                        var ft = new FileTransfer();
-                        console.log('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
-
-}
 
 function getDateStr(){
     var today = new Date();
@@ -263,7 +255,29 @@ function gotFileWriter(writer) {
     var blob = new Blob([csvData], {type: 'text/plain'});
 
     writer.write(blob);
-    uploadFile(userFileObject);
+
+                        console.log(firstName);
+                        console.log(lastName);
+
+                        var options = new FileUploadOptions();
+                        options.fileKey="file";
+                        options.fileName=userFileObject.toURL();
+                        options.mimeType="text/csv";
+                        //options.headers = {
+                        //    Connection: "close"
+                        //}
+                        //options.chunkedMode = false;
+
+                        var params = new Object();
+                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
+                        options.params = params;
+
+                        console.log(options);
+
+                        var ft = new FileTransfer();
+                        console.log('Uploading: ' + userFileObject.toURL());
+                        console.log('With newFileName: ' + options.params.newFileName);
+                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
 
     // writer.onwriteend = function(evt) {
     //           console.log('File contents have been written. File path: ' + userFileObject.fullPath);
@@ -286,30 +300,9 @@ function onDeviceReady() {
     $('#confirmUserButtonId').hide();
     // This alert is used to make sure the application is loaded correctly
     // you can comment this out once you have the application working
-    console.log('opening database');
-    db = openDatabase(shortName, version, displayName,maxSize);
-    //if (!window.openDatabase) {
-        // not all mobile devices support databases  if it does not, thefollowing alert will display
-        // indicating the device will not be albe to run this application
-       // alert('Databases are not supported in this browser.');
-        //return;
-    //}, 
-
-
-    console.log('creating table User');
-    // this line will try to create the table User in the database just created/openned
-    db.transaction(function(tx){
-
-        // you can uncomment this next line if you want the User table to be empty each time the application runs
-        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
-
-        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
-    },errorHandler,successCallBack);
-
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');
-        //window.webkitRequestFileSystem(window.PERSISTENT, 1024*1024,onFSWin,onFSFail);
         window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
             window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onFSWin, onFSFail); 
         }, function(e) {

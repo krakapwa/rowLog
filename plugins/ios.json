@@ -1,18 +1,7 @@
 {
     "prepare_queue": {
         "installed": [],
-        "uninstalled": [
-            {
-                "plugin": "nl.x-services.plugins.calendar",
-                "id": "nl.x-services.plugins.calendar",
-                "topLevel": true
-            },
-            {
-                "plugin": "nl.x-services.plugins.calendar",
-                "id": "nl.x-services.plugins.calendar",
-                "topLevel": true
-            }
-        ]
+        "uninstalled": []
     },
     "config_munge": {
         "files": {
@@ -76,16 +65,16 @@
     },
     "installed_plugins": {
         "nl.x-services.plugins.calendar": {
-            "PACKAGE_NAME": "com.example.rowLog"
+            "PACKAGE_NAME": "com.example.TenPlog"
         },
         "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.example.rowLog"
+            "PACKAGE_NAME": "com.example.TenPlog"
         },
         "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.example.rowLog"
+            "PACKAGE_NAME": "com.example.TenPlog"
         },
         "org.apache.cordova.network-information": {
-            "PACKAGE_NAME": "com.example.rowLog"
+            "PACKAGE_NAME": "com.example.TenPlog"
         }
     },
     "dependent_plugins": {}

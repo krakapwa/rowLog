@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'rowLog' target in the 'rowLog' project
+// Prefix header for all source files of the 'TenPLog' target in the 'TenPLog' project
 //
 
 #ifdef __OBJC__
