@@ -38,6 +38,20 @@ function onUserInputLoad(){
     $('#index').hide();
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
+
+    console.log('opening database');
+    db = openDatabase(shortName, version, displayName,maxSize);
+
+    console.log('creating table User');
+    // this line will try to create the table User in the database just created/openned
+    db.transaction(function(tx){
+
+        // you can uncomment this next line if you want the User table to be empty each time the application runs
+        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
+
+        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
+    },errorHandler,successCallBack);
+
 }
 
 function isNumber(n) {
@@ -286,26 +300,6 @@ function onDeviceReady() {
     $('#confirmUserButtonId').hide();
     // This alert is used to make sure the application is loaded correctly
     // you can comment this out once you have the application working
-    console.log('opening database');
-    db = openDatabase(shortName, version, displayName,maxSize);
-    //if (!window.openDatabase) {
-        // not all mobile devices support databases  if it does not, thefollowing alert will display
-        // indicating the device will not be albe to run this application
-       // alert('Databases are not supported in this browser.');
-        //return;
-    //}, 
-
-
-    console.log('creating table User');
-    // this line will try to create the table User in the database just created/openned
-    db.transaction(function(tx){
-
-        // you can uncomment this next line if you want the User table to be empty each time the application runs
-        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
-
-        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
-    },errorHandler,successCallBack);
-
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');
