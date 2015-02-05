@@ -258,10 +258,7 @@ function gotFileWriter(writer) {
                         options.fileKey="file";
                         options.fileName=userFileObject.toURL();
                         options.mimeType="text/csv";
-                        options.headers = {
-                            Connection: "close"
-                        }
-                        //options.chunkedMode = false;
+                        options.chunkedMode = false;
 
                         var params = new Object();
                         params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
