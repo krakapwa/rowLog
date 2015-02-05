@@ -13,7 +13,7 @@ var lastName;
 
 
 function errorHandler(transaction, error) {
-    console.log('Error: code: ' + error.code);
+    alert('Error: code: ' + error.code);
 }
 
 function nullHandler() {
