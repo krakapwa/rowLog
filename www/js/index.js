@@ -145,8 +145,8 @@ function checkUserValues() {
 function addUserToDB(callback) {
 
 
-    firstName = $('#txFirstName').val();
-    lastName = $('#txLastName').val();
+    //firstName = $('#txFirstName').val();
+    //lastName = $('#txLastName').val();
 
     if(checkUserValues()) {
 
@@ -303,7 +303,6 @@ function onDeviceReady() {
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');
-        //window.webkitRequestFileSystem(window.PERSISTENT, 1024*1024,onFSWin,onFSFail);
         window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
             window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onFSWin, onFSFail); 
         }, function(e) {
