@@ -272,7 +272,7 @@ function gotFileWriter(writer) {
                         var ft = new FileTransfer();
                         alert('Uploading: ' + userFileObject.toURL());
                         console.log('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
+                        ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
 
 }
 
