@@ -24,7 +24,7 @@ function successCallBack() {
 }
 
 function successUploadUser() {
-    createEvents();
+    //createEvents();
     window.location = 'warningEvents.html';
 }
 
@@ -180,15 +180,12 @@ function confirmUser(){
     }
     else {
         
-        //addUserToDB(uploadCsvUser);
-        uploadCsvUser();
+        addUserToDB(uploadCsvUser);
     }
 
     return;
 
     //document.getElementById("index").innerHTML="Please wait...";
-
-
 }
 
 function uploadCsvUser(){
@@ -296,8 +293,6 @@ function onFSFail(error) {
 function onDeviceReady() {
     console.log('onDeviceReady');
     $('#confirmUserButtonId').hide();
-    // This alert is used to make sure the application is loaded correctly
-    // you can comment this out once you have the application working
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');

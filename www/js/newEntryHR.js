@@ -40,8 +40,6 @@ function onDailyLoad(){
     // this line will try to create the table Daily in the database just created/openned
     db.transaction(function(tx){
 
-        //tx.executeSql( 'DROP TABLE IF EXISTS Daily',nullHandler,nullHandler);
-
         tx.executeSql( 'CREATE TABLE IF NOT EXISTS Daily(DailyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, HeartRate TEXT NOT NULL, RPE1 TEXT NOT NULL, RPE2 TEXT NOT NULL, Weight TEXT NOT NULL, Comments TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
