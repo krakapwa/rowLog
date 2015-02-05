@@ -13,7 +13,7 @@ var lastName;
 
 
 function errorHandler(transaction, error) {
-    alert('Error: code: ' + error.code);
+    console.log('Error: code: ' + error.code);
 }
 
 function nullHandler() {
@@ -57,7 +57,7 @@ function isNumber(n) {
 }
 
 function errorEvents(){
-    alert('calendar problem');
+    console.log('calendar problem');
 }
 function createEvents(){
 
@@ -74,7 +74,7 @@ function createEvents(){
     var title = "rowLog: Fill-in Daily heart rate and RPE";
     var loc = "";
     var notes = "";
-    var error = function(message) { alert("Error: " + message); };
+    var error = function(message) { console.log("Error: " + message); };
 
     var success = function(message) { 
         console.log('Success createEvents');
@@ -235,7 +235,7 @@ function onFSWin(fileSystem) {
 }
 
 function onGetFileWin(fileEntry) {
-    alert('onGetFileWin');
+    console.log('onGetFileWin');
     userFileObject = fileEntry;
 }
 
@@ -245,7 +245,7 @@ function gotFileWriter(writer) {
     console.log('gotFileWriter');
     //csvData = "FirstName" + "," + "LastName" + "," + "DOBday" + "," + "DOBmonth" + "," + "DOByear" + "\n";
     console.log('writing:');
-    alert(csvData);
+    console.log(csvData);
     // Create a new Blob and write it 
     var blob = new Blob([csvData], {type: 'text/plain'});
 
@@ -269,7 +269,7 @@ function gotFileWriter(writer) {
 
         var ft = new FileTransfer();
         console.log('Uploading: ' + userFileObject.toURL());
-        alert('With newFileName: ' + options.params.newFileName);
+        console.log('With newFileName: ' + options.params.newFileName);
         ft.upload(userFileObject.toURL(), encodeURI("http://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
     };
 
