@@ -180,7 +180,8 @@ function confirmUser(){
     }
     else {
         
-        addUserToDB(uploadCsvUser);
+        //addUserToDB(uploadCsvUser);
+        uploadCsvUser();
     }
 
     return;
@@ -223,7 +224,7 @@ function getDateStr(){
 
 }
 
-function onFSWin (fileSystem) {
+function onFSWin(fileSystem) {
     console.log('onFSWin');
 
     // Make file name
@@ -234,9 +235,8 @@ function onFSWin (fileSystem) {
 }
 
 function onGetFileWin(fileEntry) {
-    console.log('onGetFileWin');
+    alert('onGetFileWin');
     userFileObject = fileEntry;
-
 }
 
 function gotFileWriter(writer) {
@@ -273,16 +273,6 @@ function gotFileWriter(writer) {
                         console.log('Uploading: ' + userFileObject.toURL());
                         console.log('With newFileName: ' + options.params.newFileName);
                         ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
-
-    // writer.onwriteend = function(evt) {
-    //           console.log('File contents have been written. File path: ' + userFileObject.fullPath);
-    //               var reader = new FileReader();
-    //               reader.readAsText(userFileObject);
-    //               reader.onload = function(evt) {
-    //                   console.log('File contents:'
-    //                       + evt.target.result);
-    //               };
-    //           };
 
 }
 
