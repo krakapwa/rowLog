@@ -24,7 +24,7 @@ function successCallBack() {
 }
 
 function successUploadUser() {
-    //createEvents();
+    createEvents();
     window.location = 'warningEvents.html';
 }
 
