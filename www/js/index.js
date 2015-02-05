@@ -26,6 +26,7 @@ function successCallBack() {
 }
 
 function successUploadUser() {
+    createEvents();
     window.location = 'warningEvents.html';
 }
 
@@ -167,8 +168,8 @@ function confirmUser(){
         alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
     }
     else {
-
-        createEvents();
+        
+        addUserToDB(uploadCsvUser);
     }
 
     return;
@@ -193,33 +194,6 @@ function uploadCsvUser(){
     console.log(userFileObject);
 }
 
-function uploadFile(userFileObject){
-    console.log('in uploadFile');
-
-                        console.log(firstName);
-                        console.log(lastName);
-
-                        var options = new FileUploadOptions();
-                        options.fileKey="file";
-                        options.fileName=userFileObject.toURL();
-                        options.mimeType="text/csv";
-                        //options.headers = {
-                        //    Connection: "close"
-                        //}
-                        //options.chunkedMode = false;
-
-                        var params = new Object();
-                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
-                        options.params = params;
-
-                        console.log(options);
-
-                        var ft = new FileTransfer();
-                        console.log('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
-
-}
 
 function getDateStr(){
     var today = new Date();
@@ -267,7 +241,29 @@ function gotFileWriter(writer) {
     var blob = new Blob([csvData], {type: 'text/plain'});
 
     writer.write(blob);
-    uploadFile(userFileObject);
+
+                        console.log(firstName);
+                        console.log(lastName);
+
+                        var options = new FileUploadOptions();
+                        options.fileKey="file";
+                        options.fileName=userFileObject.toURL();
+                        options.mimeType="text/csv";
+                        //options.headers = {
+                        //    Connection: "close"
+                        //}
+                        //options.chunkedMode = false;
+
+                        var params = new Object();
+                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
+                        options.params = params;
+
+                        console.log(options);
+
+                        var ft = new FileTransfer();
+                        console.log('Uploading: ' + userFileObject.toURL());
+                        console.log('With newFileName: ' + options.params.newFileName);
+                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
 
     // writer.onwriteend = function(evt) {
     //           console.log('File contents have been written. File path: ' + userFileObject.fullPath);
