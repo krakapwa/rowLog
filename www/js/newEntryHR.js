@@ -131,7 +131,7 @@ function checkDailyValues() {
 
     if( $('#txHeartRate').toString().length!=0  || $('#txRPE1').toString().length!=0){ //Check emptiness
         if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE1').val())  ){ // Check isnumber
-            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<200 && $('#txRPE1').val()>0 && $('#txRPE1').val()<11  ) { // Check isnumber
+            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<200 && $('#txRPE1').val()>=0 && $('#txRPE1').val()<=10  ) { // Check isnumber
                 return 1;
             }else{
                 return 2; //Wrong numbers

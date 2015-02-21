@@ -11,20 +11,20 @@ var csvData;
 var firstName;
 var lastName;
 
-var lcStorage;
 
-
-// this is called when an error happens in a transaction
 function errorHandler(transaction, error) {
     console.log('Error: code: ' + error.code);
 }
 
-// this is called when a successful transaction happens
+function nullHandler() {
+}
+
 function successCallBack() {
     console.log("DEBUGGING: success");
 }
 
 function successUploadUser() {
+    createEvents();
     window.location = 'warningEvents.html';
 }
 
@@ -36,12 +36,29 @@ function onUserInputLoad(){
     $('#index').hide();
     document.addEventListener("deviceready", this.onDeviceReady, false);
 
+
+    console.log('opening database');
+    db = openDatabase(shortName, version, displayName,maxSize);
+
+    console.log('creating table User');
+    // this line will try to create the table User in the database just created/openned
+    db.transaction(function(tx){
+
+        // you can uncomment this next line if you want the User table to be empty each time the application runs
+        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
+
+        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
+    },errorHandler,successCallBack);
+
 }
 
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+function errorEvents(){
+    window.location = 'newEntry.html';
+}
 function createEvents(){
 
     var startDate = new Date();
@@ -57,7 +74,7 @@ function createEvents(){
     var title = "rowLog: Fill-in Daily heart rate and RPE";
     var loc = "";
     var notes = "";
-    var error = function(message) { alert("Error: " + message); };
+    var error = function(message) { console.log("Error: " + message); };
 
     var success = function(message) { 
         console.log('Success createEvents');
@@ -73,7 +90,8 @@ function createEvents(){
 	var calOptions = window.plugins.calendar.getCalendarOptions();
 	calOptions.recurrence = "daily"; // supported are: daily, weekly, monthly, yearly
 	calOptions.recurrenceEndDate = endDateRec; // leave null to add events into infinity and beyond
-	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,error);
+	window.plugins.calendar.createEventWithOptions(title,loc,notes,startDate,startDate,calOptions,success,errorEvents);
+        
 
 }
 
@@ -124,13 +142,12 @@ function checkUserValues() {
 // this is the function that puts values into the database using the values from the text boxes on the screen
 function addUserToDB(callback) {
 
-
-    firstName = $('#txFirstName').val();
-    lastName = $('#txLastName').val();
+    //firstName = $('#txFirstName').val();
+    //lastName = $('#txLastName').val();
 
     if(checkUserValues()) {
 
-    // this is the section that actually inserts the values into the User table
+        // this is the section that actually inserts the values into the User table
         db.transaction(function(transaction) {
             transaction.executeSql('INSERT INTO User(FirstName, LastName, DOBday, DOBmonth, DOByear) VALUES (?,?,?,?,?)',[$('#txFirstName').val(), $('#txLastName').val(), $('#txDOBday').val(), $('#txDOBmonth').val(), $('#txDOByear').val()],
                     nullHandler,errorHandler);
@@ -162,16 +179,14 @@ function confirmUser(){
         alert('Your device is not connected to the internet. Please activate mobile data in your settings and try again.');
     }
     else {
-
-        createEvents();
-        addUserToDB(uploadCsvUser);
+        
+        //addUserToDB(uploadCsvUser);
+        uploadCsvUser();
     }
 
     return;
 
     //document.getElementById("index").innerHTML="Please wait...";
-
-
 }
 
 function uploadCsvUser(){
@@ -189,33 +204,6 @@ function uploadCsvUser(){
     console.log(userFileObject);
 }
 
-function uploadFile(userFileObject){
-    console.log('in uploadFile');
-
-                        console.log(firstName);
-                        console.log(lastName);
-
-                        var options = new FileUploadOptions();
-                        options.fileKey="file";
-                        options.fileName=userFileObject.toURL();
-                        options.mimeType="text/csv";
-                        //options.headers = {
-                        //    Connection: "close"
-                        //}
-                        //options.chunkedMode = false;
-
-                        var params = new Object();
-                        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
-                        options.params = params;
-
-                        console.log(options);
-
-                        var ft = new FileTransfer();
-                        console.log('Uploading: ' + userFileObject.toURL());
-                        console.log('With newFileName: ' + options.params.newFileName);
-                        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
-
-}
 
 function getDateStr(){
     var today = new Date();
@@ -236,7 +224,7 @@ function getDateStr(){
 
 }
 
-function onFSWin (fileSystem) {
+function onFSWin(fileSystem) {
     console.log('onFSWin');
 
     // Make file name
@@ -249,7 +237,6 @@ function onFSWin (fileSystem) {
 function onGetFileWin(fileEntry) {
     console.log('onGetFileWin');
     userFileObject = fileEntry;
-
 }
 
 function gotFileWriter(writer) {
@@ -263,17 +250,29 @@ function gotFileWriter(writer) {
     var blob = new Blob([csvData], {type: 'text/plain'});
 
     writer.write(blob);
-    uploadFile(userFileObject);
+    writer.onwriteend = function(evt) {
 
-    // writer.onwriteend = function(evt) {
-    //           console.log('File contents have been written. File path: ' + userFileObject.fullPath);
-    //               var reader = new FileReader();
-    //               reader.readAsText(userFileObject);
-    //               reader.onload = function(evt) {
-    //                   console.log('File contents:'
-    //                       + evt.target.result);
-    //               };
-    //           };
+        console.log(firstName);
+        console.log(lastName);
+
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=userFileObject.toURL();
+        options.mimeType="text/csv";
+        //options.chunkedMode = false;
+
+        var params = new Object();
+        params.newFileName = firstName + lastName + getDateStr() +'_' + 'UserData.csv';
+        options.params = params;
+
+        console.log(options);
+
+        var ft = new FileTransfer();
+        console.log('Uploading: ' + userFileObject.toURL());
+        console.log('With newFileName: ' + options.params.newFileName);
+        ft.upload(userFileObject.toURL(), encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadUser, errorHandler, options,true);
+    };
+
 
 }
 
@@ -284,32 +283,9 @@ function onFSFail(error) {
 function onDeviceReady() {
     console.log('onDeviceReady');
     $('#confirmUserButtonId').hide();
-    // This alert is used to make sure the application is loaded correctly
-    // you can comment this out once you have the application working
-    console.log('opening database');
-    db = openDatabase(shortName, version, displayName,maxSize);
-    //if (!window.openDatabase) {
-        // not all mobile devices support databases  if it does not, thefollowing alert will display
-        // indicating the device will not be albe to run this application
-       // alert('Databases are not supported in this browser.');
-        //return;
-    //}, 
-
-
-    console.log('creating table User');
-    // this line will try to create the table User in the database just created/openned
-    db.transaction(function(tx){
-
-        // you can uncomment this next line if you want the User table to be empty each time the application runs
-        //tx.executeSql( 'DROP TABLE IF EXISTS User',nullHandler,nullHandler);
-
-        tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(UserId INTEGER NOT NULL PRIMARY KEY, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, DOBday TEXT NOT NULL, DOBmonth TEXT NOT NULL, DOByear TEXT NOT NULL)',[],nullHandler,errorHandler);
-    },errorHandler,successCallBack);
-
 
     if (window.webkitRequestFileSystem) {
         console.log('webkit request file system');
-        //window.webkitRequestFileSystem(window.PERSISTENT, 1024*1024,onFSWin,onFSFail);
         window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
             window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onFSWin, onFSFail); 
         }, function(e) {

@@ -1,6 +1,17 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
+        "id": "nl.x-services.plugins.calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
+        "id": "nl.x-services.plugins.calendar.tests"
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -179,8 +190,9 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "nl.x-services.plugins.calendar": "4.2.9",
     "org.apache.cordova.file": "1.3.1",
-    "org.apache.cordova.file-transfer": "0.4.7",
+    "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.network-information": "0.2.14"
 }
 // BOTTOM OF METADATA

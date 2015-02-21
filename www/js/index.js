@@ -57,7 +57,7 @@ function isNumber(n) {
 }
 
 function errorEvents(){
-    console.log('calendar problem');
+    window.location = 'newEntry.html';
 }
 function createEvents(){
 

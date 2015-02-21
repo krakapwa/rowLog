@@ -40,8 +40,6 @@ function onDailyLoad(){
     // this line will try to create the table Daily in the database just created/openned
     db.transaction(function(tx){
 
-        //tx.executeSql( 'DROP TABLE IF EXISTS Daily',nullHandler,nullHandler);
-
         tx.executeSql( 'CREATE TABLE IF NOT EXISTS Daily(DailyId INTEGER NOT NULL PRIMARY KEY, inputDate TEXT NOT NULL, inputTime TEXT NOT NULL, HeartRate TEXT NOT NULL, RPE1 TEXT NOT NULL, RPE2 TEXT NOT NULL, Weight TEXT NOT NULL, Comments TEXT NOT NULL)',[],nullHandler,errorHandler);
     },errorHandler,successCallBack);
 
@@ -133,7 +131,7 @@ function checkDailyValues() {
 
     if( $('#txHeartRate').toString().length!=0  || $('#txRPE1').toString().length!=0){ //Check emptiness
         if( isNumber($('#txHeartRate').val())  && isNumber($('#txRPE1').val())  ){ // Check isnumber
-            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<200 && $('#txRPE1').val()>0 && $('#txRPE1').val()<11  ) { // Check isnumber
+            if( $('#txHeartRate').val()>0 && $('#txHeartRate').val()<200 && $('#txRPE1').val()>=0 && $('#txRPE1').val()<=10  ) { // Check isnumber
                 return 1;
             }else{
                 return 2; //Wrong numbers
@@ -280,25 +278,28 @@ function gotFileWriter(writer) {
 
     writer.write(blob)
 
-    var options = new FileUploadOptions();
-    options.fileKey="file";
-    options.fileName=userFileObject.toURL();
-    options.mimeType="text/csv";
-    //options.headers = {
-    //    Connection: "close"
-    //}
-    //options.chunkedMode = false;
+        writer.onwriteend = function(evt) {
 
-    var params = new Object();
-    params.newFileName = firstName + lastName + getDateStr() +'_'+ 'dailyData.csv';
-    options.params = params;
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=userFileObject.toURL();
+            options.mimeType="text/csv";
+            //options.headers = {
+            //    Connection: "close"
+            //}
+            //options.chunkedMode = false;
 
-    console.log(options);
+            var params = new Object();
+            params.newFileName = firstName + lastName + getDateStr() +'_'+ 'dailyData.csv';
+            options.params = params;
 
-    var ft = new FileTransfer();
-    console.log('Uploading: ' + userFileObject.toURL());
-    console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options,true);
+            console.log(options);
+
+            var ft = new FileTransfer();
+            console.log('Uploading: ' + userFileObject.toURL());
+            console.log('With newFileName: ' + options.params.newFileName);
+            ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadHR, errorHandler, options,true);
+        };
 
 }
 

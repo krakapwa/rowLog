@@ -122,7 +122,7 @@ function checkWUPValues() {
 
     if( $('#txHRRWUP').val().length!=0 || $('#txHRR60').val().length!=0 || $('#txRPE').val().length!=0 ){
         if( isNumber($('#txHRRWUP').val())  && isNumber($('#txHRR60').val()) && isNumber($('#txRPE').val())){
-            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<200 && $('#txHRR60').val()>0 && $('#txHRR60').val()<200 && $('#txRPE').val()>0 && $('#txRPE').val()<11) { // Check isnumber
+            if( $('#txHRRWUP').val()>0 && $('#txHRRWUP').val()<200 && $('#txHRR60').val()>0 && $('#txHRR60').val()<200 && $('#txRPE').val()>=0 && $('#txRPE').val()<=10) { // Check isnumber
             return 1;
         }else{
             return 2;
@@ -199,7 +199,7 @@ function uploadCsvWUP(){
     console.log('makeCsvWUP');
 
     $("#pleasewait").dialog({
-        autoOpen: false,
+        autoOpen: true,
         modal: true,
         dialogClass: "dlg-no-close"
     });
@@ -264,27 +264,30 @@ function gotFileWriter(writer) {
     // Create a new Blob and write it 
     var blob = new Blob([csvData], {type: 'text/plain'});
 
-    writer.write(blob)
+    writer.write(blob);
 
-    var options = new FileUploadOptions();
-    options.fileKey="file";
-    options.fileName=userFileObject.toURL();
-    options.mimeType="text/csv";
-    //options.headers = {
-    //    Connection: "close"
-    //}
-    //options.chunkedMode = false;
+    writer.onwriteend = function(evt) {
 
-    var params = new Object();
-    params.newFileName = firstName + lastName + getDateStr() +'_'+ 'WUP.csv';
-    options.params = params;
+        var options = new FileUploadOptions();
+        options.fileKey="file";
+        options.fileName=userFileObject.toURL();
+        options.mimeType="text/csv";
+        //options.headers = {
+        //    Connection: "close"
+        //}
+        //options.chunkedMode = false;
 
-    console.log(options);
+        var params = new Object();
+        params.newFileName = firstName + lastName + getDateStr() +'_'+ 'WUP.csv';
+        options.params = params;
 
-    var ft = new FileTransfer();
-    console.log('Uploading: ' + userFileObject.toURL());
-    console.log('With newFileName: ' + options.params.newFileName);
-    ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadWUP, errorHandler, options,true);
+        console.log(options);
+
+        var ft = new FileTransfer();
+        console.log('Uploading: ' + userFileObject.toURL());
+        console.log('With newFileName: ' + options.params.newFileName);
+        ft.upload(options.fileName, encodeURI("https://roeienopdebosbaan.nl/upload.php"), successUploadWUP, errorHandler, options,true);
+    };
 
 }
 
